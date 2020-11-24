@@ -11,5 +11,5 @@
         dest: "/var/www/html"
         mode: 0644
       handlers:
-    - name: check the status of httpd service ..
+    - name: check the status of httpd service ....
         service: name="httpd" state="service_status"
