@@ -292,10 +292,7 @@
                                 "# Start servers\n",
                                 "service tomcat6 start\n",
                                 "/etc/init.d/httpd start\n",
-
-                                "# Send signal to WaitHandle that the setup is completed\n",
-                                "#/opt/aws/bin/cfn-signal", " -e 0", " '", { "Ref" : "WaitHandle" }, "'","\n",
-
+                                
                                 "date > /home/ec2-user/stoptime",
                                 "\n"
                                 
