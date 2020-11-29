@@ -242,7 +242,6 @@
                             "",
                             [
                                 "#!/bin/bash -xe\n",
-                                "date > /home/ec2-user/starttime",
                                 "yum install -y aws-cfn-bootstrap\n",
                                 "# Install the files and packages from the metadata\n",
                                 "/opt/aws/bin/cfn-init -v ",
@@ -268,32 +267,6 @@
                                 {
                                     "Ref": "AWS::Region"
                                 },
-                                "\n",
-                                "# Add Tomcat user to sudoers and disable tty\n",
-                                "echo \"tomcat ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers\n",
-                                "echo \"Defaults:%tomcat !requiretty\" >> /etc/sudoers\n",
-                                "echo \"Defaults:tomcat !requiretty\" >> /etc/sudoers\n",
-
-                                "# Set JVM settings\n",
-                                "echo \"JAVA_OPTS='${JAVA_OPTS} -Xms512m -Xmx512m -XX:PermSize=256m -XX:MaxPermSize=512m'\" >> /etc/tomcat6/tomcat6.conf\n",
-
-                                "# Tomcat Setup\n",
-                                "chown -R tomcat:tomcat /usr/share/tomcat6/\n",
-                                "chkconfig tomcat6 on\n",
-                                "chkconfig --level 345 tomcat6 on\n",
-
-                                "# Configure Apache HTTPD\n",
-                                "chkconfig httpd on\n",
-                                "chkconfig --level 345 httpd on\n",
-
-                                "# Proxy all requests to Tomcat\n",
-                                "echo \"ProxyPass  / ajp://localhost:8009/\" >> /etc/httpd/conf/httpd.conf\n",
-
-                                "# Start servers\n",
-                                "service tomcat6 start\n",
-                                "/etc/init.d/httpd start\n",
-                                
-                                "date > /home/ec2-user/stoptime",
                                 "\n"
                                 
                             ]
@@ -315,9 +288,7 @@
                     "ConfigureSampleApp": {
                         "packages": {
                             "yum": {
-                                "java-1.6.0-openjdk" : [],
-                                "tomcat6" : [],
-                                "httpd": []
+                                 "httpd": []
                             }
                         },
                         "files": {
@@ -340,12 +311,8 @@
                                 "httpd": {
                                     "enabled": "true",
                                     "ensureRunning": "true"
-                                },
-                                "tomcat6": {
-                                    "enabled": "true",
-                                    "ensureRunning": "true"
                                 }
-                            }
+                           }
                         }
 
                     }
