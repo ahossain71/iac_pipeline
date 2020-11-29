@@ -9,13 +9,11 @@ pipeline {
         //sh "aws cloudformation validate-template --region 'us-east-1' --template-file  $workspace/cloudformation/sunday_web_stack.json" 
         sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-BasicWebServer.json' --stack-name TomCatWebStack --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName='DevOpsKeyPair' SSHLocation=0.0.0.0/0"
       }
-    },
-    stage('Configure Tomcat'){
+    }
+    stage('Configure Tomcat') {
       steps{
         sh "aws-playbook tomcat-setup.yml"
       }
-
     }
-
-  }
-}
+  } //end stages
+}//end pipeline
