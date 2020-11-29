@@ -52,22 +52,22 @@
   file:
     path: /etc/systemd/system/tomcat.service
     state: directory
-    owner: ec2-user
-    group: ec2-user
+    owner: tomcat
+    group: tomcat
     mode: 0755
     modification_time: "201812271410.15"
     access_time: now
 
-#- name: Copy tomcat service file
-#template:
-#src: ../templates/tomcat.service.j2
-##    dest: /etc/systemd/system/tomcat.service
-##when: ansible_service_mgr == "systemd"
-
 - name: Copy tomcat service file
-  copy:
-    src: ../templates/tomcat.service.j2
-    dest: /etc/systemd/system/tomcat.service
+  template:
+      src: ../templates/tomcat.service.j2
+      dest: /etc/systemd/system/tomcat.service
+  when: ansible_service_mgr == "systemd"
+
+#- name: Copy tomcat service file
+#  copy:
+#    src: ../templates/tomcat.service.j2
+#    dest: /etc/systemd/system/tomcat.service
 
 - name: Start and enable tomcat
   service:
@@ -75,14 +75,14 @@
     name: tomcat
     state: started
     enabled: yes
- # when: ansible_service_mgr == "systemd"
+  when: ansible_service_mgr == "systemd"
 
 - name: Start and enable firewalld
   service:
     name: firewalld
     state: started
     enabled: yes
-  #when: ansible_service_mgr == "systemd"
+  when: ansible_service_mgr == "systemd"
 
 - name: Open tomcat port on the firewall
   firewalld:
@@ -90,7 +90,7 @@
     permanent: true
     state: enabled
     immediate: yes
-  #when: ansible_service_mgr == "systemd"
+  when: ansible_service_mgr == "systemd"
 
 - name: Set UI access credentials
   template:
@@ -105,7 +105,7 @@
   with_items:
     - /usr/share/tomcat/webapps/host-manager/META-INF/context.xml
     - /usr/share/tomcat/webapps/manager/META-INF/context.xml
-  #notify: restart tomcat
+  notify: restart tomcat
 
 - name: restart tomcat
   service:
