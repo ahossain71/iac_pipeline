@@ -61,6 +61,13 @@
   debug:
     var: ansible_service_mgr
 
+- name: Create /system/tomcat.service  under  /etc/systemd directory path
+  file:
+    path: /etc/systemd/system/tomcat.service
+    state: directory
+    owner: tomcat
+    group: tomcat
+
 - name: Copy tomcat service file
   template:
       src: ./roles/tomcat/templates/tomcat.service.j2
