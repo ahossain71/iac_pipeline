@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Configure Tomcat') {
       steps{
-        sh "ansible-playbook /cloudformation/tomcat-setup.yml"
+        sh "ansible-playbook /ansible/playbooks/tomcat-setup.yml"
       }
     }
   } //end stages
