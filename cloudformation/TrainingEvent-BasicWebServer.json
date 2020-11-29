@@ -314,7 +314,7 @@
                       "Handle" : { "Ref" : "WaitHandle" },
                       "Timeout" : "1200"
                     }
-                  },
+                  }
             },
             "Metadata": {
                 "AWS::CloudFormation::Designer": {
