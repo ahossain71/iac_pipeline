@@ -90,8 +90,9 @@
   with_items:
     - /usr/share/tomcat/webapps/host-manager/META-INF/context.xml
     - /usr/share/tomcat/webapps/manager/META-INF/context.xml
-  notify: restart tomcat
+  #notify: restart tomcat
 
-  handlers:
-    - name: check the status of httpd service ...
-      service: name="httpd" state="service_status"
+- name: restart tomcat
+  service:
+    name: tomcat
+    state: restarted
