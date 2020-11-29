@@ -242,6 +242,7 @@
                             "",
                             [
                                 "#!/bin/bash -xe\n",
+                                "date > /home/ec2-user/starttime\n",
                                 "yum install -y aws-cfn-bootstrap\n",
                                 "# Install the files and packages from the metadata\n",
                                 "/opt/aws/bin/cfn-init -v ",
@@ -286,7 +287,9 @@
                     "ConfigureSampleApp": {
                         "packages": {
                             "yum": {
-                                "httpd": []
+                                "java-1.6.0-openjdk" : [],
+                                "tomcat6" : [],
+                                 "httpd" : []
                             }
                         },
                         "files": {

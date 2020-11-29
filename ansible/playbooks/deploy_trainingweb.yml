@@ -1,5 +1,5 @@
 ---
-- hosts: trainingweb
+- hosts: tomcat-nodes
   vars:
     http_port: 80
     max_client: 200
