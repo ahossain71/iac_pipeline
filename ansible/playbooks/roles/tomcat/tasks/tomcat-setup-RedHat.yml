@@ -57,7 +57,10 @@
 #    mode: 0755
 #    modification_time: "201812271410.15"
 #    access_time: now
-
+- name: FINDING THE VALUE OF ANSIBEL SERVUCE MNGR
+  debug:
+    var: ansible_service_mgr
+    
 - name: Copy tomcat service file
   template:
       src: $workspace/ansible/playbooksroles/tomcat/templates/tomcat.service.j2
