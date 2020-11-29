@@ -267,7 +267,7 @@
                                 "         --region ",
                                 {
                                     "Ref": "AWS::Region"
-                                }
+                                },
                                 "\n"
                             ]
                         ]
@@ -287,9 +287,7 @@
                     "ConfigureSampleApp": {
                         "packages": {
                             "yum": {
-                                "java-1.6.0-openjdk" : [],
-                                "tomcat6" : [],
-                                 "httpd" : []
+                                "httpd" : []
                             }
                         },
                         "files": {
