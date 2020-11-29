@@ -48,15 +48,15 @@
     extra_opts: "--strip-components=1"
     creates: /usr/share/tomcat/bin
 
-- name: modify permissions and properties of a directory (or create it if it doesn't exist)
-  file:
-    path: /etc/systemd/system/tomcat.service
-    state: directory
-    owner: tomcat
-    group: tomcat
-    mode: 0755
-    modification_time: "201812271410.15"
-    access_time: now
+#- name: modify permissions and properties of a directory (or create it if it doesn't exist)
+#  file:
+#    path: /etc/systemd/system/tomcat.service
+#    state: directory
+#    owner: tomcat
+#    group: tomcat
+#    mode: 0755
+#    modification_time: "201812271410.15"
+#    access_time: now
 
 - name: Copy tomcat service file
   template:
