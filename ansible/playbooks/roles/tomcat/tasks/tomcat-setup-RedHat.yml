@@ -67,7 +67,7 @@
 
 - name: Start and enable tomcat
   systemd:
-    #daemon_reload: yes
+    daemon_reload: yes
     name: /etc/systemd/system/tomcat.service
     state: started
     enabled: yes
