@@ -71,7 +71,7 @@
 - name: Copy tomcat service file
   template:
     src: ./roles/tomcat/templates/tomcat.service.j2
-    est: /etc/systemd/system/tomcat.service
+    dest: /etc/systemd/system/tomcat.service
   when: ansible_service_mgr == "upstart"
 
 - name: Start and enable tomcat
