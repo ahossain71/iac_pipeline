@@ -48,15 +48,6 @@
     extra_opts: "--strip-components=1"
     creates: /usr/share/tomcat/bin
 
-#- name: modify permissions and properties of a directory (or create it if it doesn't exist)
-#  file:
-#    path: /etc/systemd/system/tomcat.service
-#    state: directory
-#    owner: tomcat
-#    group: tomcat
-#    mode: 0755
-#    modification_time: "201812271410.15"
-#    access_time: now
 - name: FINDING THE VALUE OF ANSIBEL SERVUCE MNGR
   debug:
     var: ansible_service_mgr
@@ -77,7 +68,7 @@
 - name: Start and enable tomcat
   systemd:
     #daemon_reload: yes
-    name: tomcat
+    name: /usr/share/tomcat
     state: started
     enabled: yes
   when: ansible_service_mgr == "upstart"
