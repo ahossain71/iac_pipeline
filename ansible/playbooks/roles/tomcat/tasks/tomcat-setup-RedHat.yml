@@ -68,7 +68,7 @@
 - name: Start and enable tomcat
   systemd:
     #daemon_reload: yes
-    name: tomcat
+    name: /etc/systemd/system/tomcat.service
     state: started
     enabled: yes
   when: ansible_service_mgr == "upstart"
