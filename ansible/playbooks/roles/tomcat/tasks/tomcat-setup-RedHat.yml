@@ -74,20 +74,20 @@
       dest: /etc/systemd/system/tomcat.service
   when: ansible_service_mgr == "upstart"
 
-#- name: Start and enable tomcat
-#  service:
-#    daemon_reload: yes
-#    name: tomcat
-#    state: start
-#    enabled: yes
-#  when: ansible_service_mgr == "upstart"
+- name: Start and enable tomcat
+  service:
+    daemon_reload: yes
+    name: tomcat
+    state: start
+    enabled: yes
+  when: ansible_service_mgr == "upstart"
 
-#- name: Start and enable firewalld
-#  service:
-#    name: firewalld
-#    state: started
-#    enabled: yes
-#  when: ansible_service_mgr == "upstart"
+- name: Start and enable firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+  when: ansible_service_mgr == "upstart"
 
 #- name: Open tomcat port on the firewall
 #  firewalld:
