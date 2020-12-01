@@ -70,15 +70,15 @@
 
 - name: Copy tomcat service file
   template:
-      src: ./roles/tomcat/templates/tomcat.service.j2
-      dest: /etc/systemd/system/tomcat.service
+    src: ./roles/tomcat/templates/tomcat.service.j2
+    est: /etc/systemd/system/tomcat.service
   when: ansible_service_mgr == "upstart"
 
 - name: Start and enable tomcat
   service:
-    daemon_reload: yes
+    #daemon_reload: yes
     name: tomcat
-    state: start
+    state: started
     enabled: yes
   when: ansible_service_mgr == "upstart"
 
@@ -89,13 +89,13 @@
     enabled: yes
   when: ansible_service_mgr == "upstart"
 
-#- name: Open tomcat port on the firewall
-#  firewalld:
-#    port: 8080/tcp
-#    permanent: true
-#    state: enabled
-#    immediate: yes
-#  when: ansible_service_mgr == "upstart"
+- name: Open tomcat port on the firewall
+  firewalld:
+    port: 8080/tcp
+    permanent: true
+    state: enabled
+    immediate: yes
+  when: ansible_service_mgr == "upstart"
 
 - name: Set UI access credentials
   template:
