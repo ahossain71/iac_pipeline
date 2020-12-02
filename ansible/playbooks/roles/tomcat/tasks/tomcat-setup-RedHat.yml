@@ -69,6 +69,7 @@
   service:
     #daemon_reload: yes
     name: tomcat
+    pattern: /etc/systemd/system/tomcat.service
     state: started
     #enabled: yes
   register: tomcat_service
