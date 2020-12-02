@@ -68,7 +68,7 @@
 - name: Start and enable tomcat
   systemd:
     daemon_reload: yes
-    name: tomcat
+    name: tomcat9
     #pattern: /etc/systemd/system/tomcat.service/tomcat.service.j2
     state: started
     enabled: yes
