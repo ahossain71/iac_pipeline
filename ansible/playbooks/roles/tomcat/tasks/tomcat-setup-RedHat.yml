@@ -66,15 +66,16 @@
   when: ansible_service_mgr == "upstart"
 
 - name: Start and enable tomcat
-  upstart:
+  systemd:
     daemon_reload: yes
-    name: /etc/systemd/system/tomcat.service
+    name: tomcat
+    pattern: /etc/systemd/system/tomcat
     state: started
     enabled: yes
   when: ansible_service_mgr == "upstart"
 
 - name: Start and enable firewalld
-  upstart:
+  systemd:
     name: firewalld
     state: started
     enabled: yes
