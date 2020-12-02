@@ -67,11 +67,11 @@
 
 - name: Start and enable tomcat
   systemd:
-    daemon_reload: yes
+    #daemon_reload: yes
     name: tomcat9
     #pattern: /etc/systemd/system/tomcat.service/tomcat.service.j2
     state: started
-    enabled: yes
+    #enabled: yes
   when: ansible_service_mgr == "upstart"
 
 - name: Start and enable firewalld
