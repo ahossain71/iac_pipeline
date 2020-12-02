@@ -68,7 +68,7 @@
 - name: Start and enable tomcat
   service:
     #daemon_reload: yes
-    name: tomcat9
+    name: tomcat
     pattern: /usr/share/tomcat
     state: started
     #enabled: yes
