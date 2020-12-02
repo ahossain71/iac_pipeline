@@ -69,7 +69,6 @@
   service:
     #daemon_reload: yes
     name: tomcat
-    pattern: /usr/share/tomcat
     state: started
     #enabled: yes
   register: tomcat_service
