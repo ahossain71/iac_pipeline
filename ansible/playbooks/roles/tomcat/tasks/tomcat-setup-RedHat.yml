@@ -66,20 +66,22 @@
   when: ansible_service_mgr == "upstart"
 
 - name: Start and enable tomcat
-  systemd:
+  service:
     #daemon_reload: yes
     name: tomcat9
-    #pattern: /etc/systemd/system/tomcat.service/tomcat.service.j2
+    pattern: /usr/share/tomcat
     state: started
     #enabled: yes
-  when: ansible_service_mgr == "upstart"
+  register: tomcat_service
+  #when: ansible_service_mgr == "upstart"
 
 - name: Start and enable firewalld
   systemd:
     name: firewalld
     state: started
     enabled: yes
-  when: ansible_service_mgr == "upstart"
+  when: tomcat_service.changed
+  #when: ansible_service_mgr == "upstart"
 
 - name: Open tomcat port on the firewall
   firewalld:
@@ -87,7 +89,8 @@
     permanent: true
     state: enabled
     immediate: yes
-  when: ansible_service_mgr == "upstart"
+  #when: ansible_service_mgr == "upstart"
+  when: tomcat_service.changed
 
 - name: Set UI access credentials
   template:
