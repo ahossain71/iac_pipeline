@@ -16,10 +16,9 @@ pipeline {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
           withCredentials([sshUserPrivateKey(credentialsId: 'cff1d3fe-236f-43ca-8ff5-5f37ec63422d', keyFileVariable: 'myKEY')]) {
              sh 'ansible-playbook ./ansible/playbooks/tomcat-setup.yml --user ubuntu --key-file ${myKEY}'  
-        }//end withCredentials
-        sh "exit 1"
+           }//end withCredentials
+          sh "exit 1"
         }//catch error
-      }
-    }
+    }//end steps
   } //end stages
 }//end pipeline
