@@ -55,6 +55,10 @@
     extra_opts: "--strip-components=1"
     creates: /usr/share/tomcat/bin
 
+- name: FINDING THE VALUE OF ANSIBEL SERVUCE MNGR at tomcat-setup-Debian.yml
+  debug:
+    var: ansible_service_mgr
+
 - name: Copy tomcat service file
   template:
     src: templates/tomcat.service.j2
