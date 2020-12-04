@@ -35,13 +35,18 @@
       #  - debug:
       #    var: etchostsupdate
 
+      #- name: "Build hosts file"
+      #  become: yes
+      #  become_user: "root"
+      #  lineinfile: 
+      #    dest: "/etc/hosts"
+      #    regexp: '.*{{ item }}$' 
+      #    line: "{{ hostvars[item]['ansible_hostname'] }} {{item}}" 
+      #    state: present
+      #  when: hostvars[item]['ansible_hostname'] is defined
+      #  with_items: groups['tomcat-nodes']
+
       - name: "Build hosts file"
-        become: yes
-        become_user: "root"
-        lineinfile: 
-          dest: "/etc/hosts"
-          regexp: '.*{{ item }}$' 
-          line: "{{ hostvars[item]['ansible_hostname'] }} {{item}}" 
-          state: present
-        when: hostvars[item]['ansible_hostname']
-        with_items: groups['tomcat-nodes']
+        lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item].ansible_default_ipv4.address }} {{item}}" state=present
+        when: hostvars[item].ansible_default_ipv4.address is defined
+        with_items: groups['all']
