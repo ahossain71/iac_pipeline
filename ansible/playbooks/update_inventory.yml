@@ -19,9 +19,12 @@
       #  with_items: "{{groups['tomcat-nodes']}}"
 
       - name: "Build hosts file"
-        tags: etchostsupdate
         become: yes
         become_user: "root"
-        lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item].ansible_default_ipv4.address }} {{item}}" state=present
+        lineinfile: 
+          dest: "/etc/hosts"
+          regexp: '.*{{ item }}$' 
+          line: "{{ hostvars[item].ansible_default_ipv4.address }} {{item}}" 
+          state: present
         when: hostvars[item].ansible_default_ipv4.address is defined
         with_items: groups['tomcat-nodes']
