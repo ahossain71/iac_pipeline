@@ -15,7 +15,7 @@ pipeline {
       steps{
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
           withCredentials([sshUserPrivateKey(credentialsId: 'cff1d3fe-236f-43ca-8ff5-5f37ec63422d', keyFileVariable: 'myKEY')]) {
-             sh 'ansible-playbook ./ansible/playbooks/update_inventory.yml --user ubuntu --key-file ${myKEY} -e "root_user=ubuntu hosts_group=tomcat-nodes"'  
+             sh 'ansible-playbook ./ansible/playbooks/update_inventory.yml --user ubuntu --key-file ${myKEY} --extra-var "root_user=ubuntu hosts_group=tomcat-nodes"'  
            }//end withCredentials
           sh "exit 0"
          }//end catchError
