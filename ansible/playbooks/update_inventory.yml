@@ -19,7 +19,7 @@
         with_items: "{{groups['tomcat-nodes']}}"
 
       - debug:
-          var: "{{etchostsupdate}}"
+          var: etchostsupdate
 
       #- name: "Build hosts file"
       #  become: yes
