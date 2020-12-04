@@ -26,5 +26,5 @@
           regexp: '.*{{ item }}$' 
           line: "{{ hostvars[item]['ansible_ssh_host'] }} {{item}}" 
           state: present
-        when: hostvars[item]['ansible_ssh_host'] is defined
+        when: hostvars[item]['ansible_ssh_host'] != "{{ item }}" or hostvars[item]['ansible_ssh_host'] == "{{item}}"
         with_items: groups['tomcat-nodes']
