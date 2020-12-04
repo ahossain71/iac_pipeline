@@ -4,30 +4,30 @@
     gather_facts: yes
     tasks:
 
-      - name: Update the /etc/hosts file with node name
-        tags: etchostsupdate
-        become: yes
-        become_user: "root"
-        lineinfile:
-          path: "/etc/hosts"
-          regexp: ".*\t{{ hostvars[item]['ansible_hostname']}}\t{{ hostvars[item]['ansible_hostname']}}"
-          line: "{{ hostvars[item]['ansible_env'].SSH_CONNECTION.split(' ')[2] }}\t{{ hostvars[item]['ansible_hostname']}}\t{{ hostvars[item]['ansible_hostname']}}"
-          state: present
-          backup: no
-        register: etchostsupdate
-        when: ansible_hostname != "{{ item }}" or ansible_hostname == "{{ item }}"
-        with_items: "{{groups['tomcat-nodes']}}"
+      #- name: Update the /etc/hosts file with node name
+      #  tags: etchostsupdate
+      #  become: yes
+      #  become_user: "root"
+      #  lineinfile:
+      #    path: "/etc/hosts"
+      #    regexp: ".*\t{{ hostvars[item]['ansible_hostname']}}\t{{ hostvars[item]['ansible_hostname']}}"
+      #    line: "{{ hostvars[item]['ansible_env'].SSH_CONNECTION.split(' ')[2] }}\t{{ hostvars[item]['ansible_hostname']}}\t{{ hostvars[item]['ansible_hostname']}}"
+      #    state: present
+      #    backup: no
+      #  register: etchostsupdate
+      #  when: ansible_hostname != "{{ item }}" or ansible_hostname == "{{ item }}"
+      #  with_items: "{{groups['tomcat-nodes']}}"
 
       - debug:
           var: etchostsupdate
 
-      #- name: "Build hosts file"
-      #  become: yes
-      #  become_user: "root"
-      #  lineinfile: 
-      #    dest: "/etc/hosts"
-      #    regexp: '.*{{ item }}$' 
-      #    line: "{{ hostvars[item]['ansible_ssh_host'] }} {{item}}" 
-      #    state: present
-      #  when: hostvars[item]['ansible_ssh_host']
-      #  with_items: groups['all']
+      - name: "Build hosts file"
+        become: yes
+        become_user: "root"
+        lineinfile: 
+          dest: "/etc/hosts"
+          regexp: '.*{{ item }}$' 
+          line: "{{ hostvars[item]['ansible_host'] }} {{item}}" 
+          state: present
+        when: hostvars[item]['ansible_host']
+        with_items: groups['tomcat-nodes']
