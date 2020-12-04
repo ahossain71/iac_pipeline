@@ -7,7 +7,7 @@
       - name: Update the /etc/hosts file with node name
         tags: etchostsupdate
         become: yes
-        #become_user: "ubuntu"
+        become_user: "ec2-user"
         lineinfile:
           path: "/etc/ansible/hosts"
           regexp: ".*\t{{ hostvars[item]['ansible_hostname']}}\t{{ hostvars[item]['ansible_hostname']}}"
