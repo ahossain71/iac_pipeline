@@ -87,4 +87,3 @@
     - /usr/share/tomcat/webapps/host-manager/META-INF/context.xml
     - /usr/share/tomcat/webapps/manager/META-INF/context.xml
   notify: restart tomcat
-
