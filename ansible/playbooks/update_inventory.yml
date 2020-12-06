@@ -4,11 +4,12 @@
     gather_facts: yes
 
     tasks:
-      plugin: amazon.aws.aws_ec2
-      regions:
-        - us-east-1
-      
-      
+
+      - name: Tryng to pull the server names from aws
+        plugin: amazon.aws.aws_ec2
+        regions:
+          - us-east-1
+            
       ##- name: Update the /etc/hosts file with node name
       #  tags: etchostsupdate
       #  become: yes
