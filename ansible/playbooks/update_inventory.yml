@@ -3,11 +3,11 @@
     hosts: "tomcat-nodes"
     gather_facts: yes
 
-    plugin: amazon.aws.aws_ec2
-    regions:
-      - us-east-1
-      
     tasks:
+      plugin: amazon.aws.aws_ec2
+      regions:
+        - us-east-1
+      
       
       ##- name: Update the /etc/hosts file with node name
       #  tags: etchostsupdate
