@@ -5,8 +5,7 @@
 
     tasks:
 
-      - name: Tryng to pull the server names from aws
-        plugin: amazon.aws.aws_ec2
+      plugin: amazon.aws.aws_ec2
         regions:
           - us-east-1
             
