@@ -6,8 +6,8 @@
     tasks:
 
       plugin: amazon.aws.aws_ec2
-        regions:
-          - us-east-1
+      regions:
+        - us-east-1
             
       ##- name: Update the /etc/hosts file with node name
       #  tags: etchostsupdate
