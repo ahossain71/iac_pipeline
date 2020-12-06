@@ -9,7 +9,7 @@
         become: yes
         become_user: "root"
         lineinfile:
-          path: "/etc/hosts"
+          path: "/etc/ansible/hosts"
           regexp: ".*\t{{ hostvars[item]['ansible_hostname']}}\t{{ hostvars[item]['ansible_hostname']}}"
           line: "{{ hostvars[item]['ansible_env'].SSH_CONNECTION.split(' ')[2] }}\t{{ hostvars[item]['ansible_hostname']}}\t{{ hostvars[item]['ansible_hostname']}}"
           state: present
