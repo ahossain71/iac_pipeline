@@ -7,8 +7,8 @@
       
       - name: Getting the ipv4 DN of the servers in the enevironment
         plugin: amazon.aws.aws_ec2
-          regions:
-            - us-east-1
+        regions:
+          - us-east-1
         register: myservers
 
         debug:
