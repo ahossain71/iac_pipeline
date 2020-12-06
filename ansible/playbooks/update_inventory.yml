@@ -4,13 +4,13 @@
     gather_facts: yes
       
     plugin: amazon.aws.aws_ec2
-      regions:
-        - us-east-1
+    regions:
+      - us-east-1
     register: myservers
 
     debug:
       var: myservers
-      
+
     tasks:
 
       ##- name: Update the /etc/hosts file with node name
