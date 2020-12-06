@@ -2,18 +2,13 @@
   - name: host file update - Local DNS setup across all the servers
     hosts: "tomcat-nodes"
     gather_facts: yes
+
+    plugin: aws_ec2
+    regions:
+      - us-east-1
       
     tasks:
       
-      - name: Getting the ipv4 DN of the servers in the enevironment
-        plugin: amazon.aws.aws_ec2
-        regions: us-east-1
-        register: myservers
-
-      - name: Displaying the server names
-        debug:
-          var: myservers
-
       ##- name: Update the /etc/hosts file with node name
       #  tags: etchostsupdate
       #  become: yes
