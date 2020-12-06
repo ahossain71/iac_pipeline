@@ -1,8 +1,7 @@
 ---
   - name: host file update - Local DNS setup across all the servers
-    hosts: "tomcat_nodes"
-    gather_facts: yes
-
+    #hosts: "tomcat_nodes"
+    #gather_facts: yes
     plugin: amazon.aws.aws_ec2
     regions: 
       - us-east-1
