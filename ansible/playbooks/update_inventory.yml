@@ -9,7 +9,7 @@
       regions: 
         - us-east-1
             
-      ##- name: Update the /etc/hosts file with node name
+      #- name: Update the /etc/hosts file with node name
       #  tags: etchostsupdate
       #  become: yes
       #  become_user: "root"
