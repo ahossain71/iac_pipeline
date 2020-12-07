@@ -12,9 +12,6 @@
 
     - name: List several EC2 instances according to their name tag
       ec2_instance_info:
-        names:
-          - tomcat-web-dev
-          - tomcat-web-val
       register: result
 
     - debug:
