@@ -9,12 +9,13 @@
   #  - us-east-2
       
   tasks:
-   - name: List several EC2 instances according to their name tag
-     steampunk.aws.ec2_instance_info:
-        names:
-          - training-web-dev
-          - training-web-val
-     register: result 
+    
+    - name: List several EC2 instances according to their name tag
+      steampunk.aws.ec2_instance_info:
+         names:
+           - training-web-dev
+           - training-web-val
+      register: result 
 
 
 
