@@ -17,7 +17,9 @@
           - tomcat-web-val
       register: result
 
-
+      debug:
+        var: result
+        
       #- name: Update the /etc/hosts file with node name
       #  tags: etchostsupdate
       #  become: yes
