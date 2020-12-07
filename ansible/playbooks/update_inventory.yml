@@ -12,9 +12,9 @@
 
     - name: List several EC2 instances according to their name tag
       ec2_instance_info:
-        names:
-          - training-web-dev
-          - training-web-val
+        region:
+          - us-east-1
+          - us-east-2
       register: result
 
     - debug:
