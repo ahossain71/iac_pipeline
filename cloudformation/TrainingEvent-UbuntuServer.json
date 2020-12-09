@@ -237,9 +237,7 @@
                     }
                 ],
                 "Tags" : [
-                    {"Key" : "Name", "Value" : "tomcat-web"},
-                    {"Key" : "Environment", "Value" : "dev"},
-                    {"Key" : "Owner", "Value" : { "Ref" : "owner" }}
+                    {"Key" : "Name", "Value" : "tomcat-web"}
                 ],
                 "UserData": {
                     "Fn::Base64": {
@@ -366,9 +364,7 @@
                     }
                 ],
                 "Tags" : [
-                    {"Key" : "Name", "Value" : "tomcat-web"},
-                    {"Key" : "Environment", "Value" : "dev"},
-                    {"Key" : "Owner", "Value" : { "Ref" : "owner" }}
+                    {"Key" : "Name", "Value" : "tomcat-web"}
                 ],
                 "UserData": {
                     "Fn::Base64": {
