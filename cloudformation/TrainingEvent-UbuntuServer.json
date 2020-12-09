@@ -555,7 +555,7 @@
         }
     },
     "Outputs": {
-        "URL-1": {
+        "URL01": {
             "Value": {
                 "Fn::Join": [
                     "",
@@ -572,7 +572,7 @@
             },
             "Description": "Newly created application URL for WebSerberInstance-1"
         },
-        "URL-2": {
+        "URL02": {
             "Value": {
                 "Fn::Join": [
                     "",
