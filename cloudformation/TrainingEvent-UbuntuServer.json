@@ -238,7 +238,7 @@
                 ],
                 "Tags" : [
                     {"Key" : "Name", "Value" : "tomcat-web"},
-                    {"Key" : "Environment", "Value" : { "Ref" : "Environment" }},
+                    {"Key" : "Environment", "Value" : "dev"},
                     {"Key" : "Owner", "Value" : { "Ref" : "owner" }}
                 ],
                 "UserData": {
@@ -367,7 +367,7 @@
                 ],
                 "Tags" : [
                     {"Key" : "Name", "Value" : "tomcat-web"},
-                    {"Key" : "Environment", "Value" : { "Ref" : "Environment" }},
+                    {"Key" : "Environment", "Value" : "dev"},
                     {"Key" : "Owner", "Value" : { "Ref" : "owner" }}
                 ],
                 "UserData": {
@@ -908,7 +908,5 @@
                 "HVMG2": "NOT_SUPPORTED"
             }
         }
-    },
-    "Environment": "dev"
-
+    }
 }
