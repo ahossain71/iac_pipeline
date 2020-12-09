@@ -195,7 +195,7 @@
                 }
             }
         },
-        "WebServerInstance": {
+        "WebServerInstance-1": {
             "Type": "AWS::EC2::Instance",
             "Properties": {
                 "InstanceType": {
@@ -254,7 +254,7 @@
                                 {
                                     "Ref": "AWS::StackName"
                                 },
-                                "         --resource WebServerInstance ",
+                                "         --resource WebServerInstance-1 ",
                                 "         --configsets All ",
                                 "         --region ",
                                 {
@@ -267,7 +267,136 @@
                                 {
                                     "Ref": "AWS::StackName"
                                 },
-                                "         --resource WebServerInstance ",
+                                "         --resource WebServerInstance-1 ",
+                                "         --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n"
+                                
+                            ]
+                        ]
+                    }
+                }
+
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "6443ef65-1f73-4d81-87dd-7692c15e6eff"
+                },
+                "AWS::CloudFormation::Init": {
+                    "configSets": {
+                        "All": [
+                            "ConfigureSampleApp"
+                        ]
+                    },
+                    "ConfigureSampleApp": {
+                        "packages": {
+                            "yum": {
+                                 "httpd": []
+                            }
+                        },
+                        "files": {
+                            "/var/www/html/index.html": {
+                                "content": {
+                                    "Fn::Join": [
+                                        "\n",
+                                        [
+                                            "<h1>Congratulations Cloudelevation trainees, you have successfully launched the AWS CloudFormation sample.....</h1>"
+                                        ]
+                                    ]
+                                },
+                                "mode": "000644",
+                                "owner": "root",
+                                "group": "root"
+                            }
+                        },
+                        "services": {
+                            "sysvinit": {
+                                "httpd": {
+                                    "enabled": "true",
+                                    "ensureRunning": "true"
+                                }
+                           }
+                        }
+
+                    }
+                }
+            }
+        },
+        "WebServerInstance-2": {
+            "Type": "AWS::EC2::Instance",
+            "Properties": {
+                "InstanceType": {
+                    "Ref": "InstanceType"
+                },
+                "ImageId": {
+                    "Fn::FindInMap": [
+                        "AWSRegionArch2AMI",
+                        {
+                            "Ref": "AWS::Region"
+                        },
+                        {
+                            "Fn::FindInMap": [
+                                "AWSInstanceType2Arch",
+                                {
+                                    "Ref": "InstanceType"
+                                },
+                                "Arch"
+                            ]
+                        }
+                    ]
+                },
+                "KeyName": { 
+                    "Ref": "KeyName"
+                },
+                "NetworkInterfaces": [
+                    {
+                        "GroupSet": [
+                            {
+                                "Ref": "WebServerSecurityGroup"
+                            }
+                        ],
+                        "AssociatePublicIpAddress": "true",
+                        "DeviceIndex": "0",
+                        "DeleteOnTermination": "true",
+                        "SubnetId": {
+                            "Ref": "PublicNet"
+                        }
+                    }
+                ],
+                "Tags" : [
+                    {"Key" : "Name", "Value" : "tomcat-web"},
+                    {"Key" : "Environment", "Value" : { "Ref" : "Environment" }},
+                    {"Key" : "Owner", "Value" : { "Ref" : "Owner" }}
+                ],
+                "UserData": {
+                    "Fn::Base64": {
+                        "Fn::Join": [
+                            "",
+                            [
+                                "#!/bin/bash -xe\n",
+                                "yum install -y aws-cfn-bootstrap\n",
+                                "# Install the files and packages from the metadata\n",
+                                "/opt/aws/bin/cfn-init -v ",
+                                "         --stack ",
+                                {
+                                    "Ref": "AWS::StackName"
+                                },
+                                "         --resource WebServerInstance-2 ",
+                                "         --configsets All ",
+                                "         --region ",
+                                {
+                                    "Ref": "AWS::Region"
+                                },
+                                "\n",
+                                "# Signal the status from cfn-init\n",
+                                "/opt/aws/bin/cfn-signal -e $? ",
+                                "         --stack ",
+                                {
+                                    "Ref": "AWS::StackName"
+                                },
+                                "         --resource WebServerInstance-2 ",
                                 "         --region ",
                                 {
                                     "Ref": "AWS::Region"
@@ -430,7 +559,7 @@
         }
     },
     "Outputs": {
-        "URL": {
+        "URL-1": {
             "Value": {
                 "Fn::Join": [
                     "",
@@ -438,14 +567,31 @@
                         "http://",
                         {
                             "Fn::GetAtt": [
-                                "WebServerInstance",
+                                "WebServerInstance-1",
                                 "PublicIp"
                             ]
                         }
                     ]
                 ]
             },
-            "Description": "Newly created application URL"
+            "Description": "Newly created application URL for WebSerberInstance-1"
+        },
+        "URL-2": {
+            "Value": {
+                "Fn::Join": [
+                    "",
+                    [
+                        "http://",
+                        {
+                            "Fn::GetAtt": [
+                                "WebServerInstance-2",
+                                "PublicIp"
+                            ]
+                        }
+                    ]
+                ]
+            },
+            "Description": "Newly created application URL for WebSerberInstance-2"
         }
     },
     "Parameters": {
