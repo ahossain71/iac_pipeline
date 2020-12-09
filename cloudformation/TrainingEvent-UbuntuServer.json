@@ -195,7 +195,7 @@
                 }
             }
         },
-        "WebServerInstance-1": {
+        "WebServerInstance01": {
             "Type": "AWS::EC2::Instance",
             "Properties": {
                 "InstanceType": {
@@ -254,7 +254,7 @@
                                 {
                                     "Ref": "AWS::StackName"
                                 },
-                                "         --resource WebServerInstance-1 ",
+                                "         --resource WebServerInstance01 ",
                                 "         --configsets All ",
                                 "         --region ",
                                 {
@@ -267,7 +267,7 @@
                                 {
                                     "Ref": "AWS::StackName"
                                 },
-                                "         --resource WebServerInstance-1 ",
+                                "         --resource WebServerInstance01 ",
                                 "         --region ",
                                 {
                                     "Ref": "AWS::Region"
@@ -324,7 +324,7 @@
                 }
             }
         },
-        "WebServerInstance-2": {
+        "WebServerInstance02": {
             "Type": "AWS::EC2::Instance",
             "Properties": {
                 "InstanceType": {
@@ -383,7 +383,7 @@
                                 {
                                     "Ref": "AWS::StackName"
                                 },
-                                "         --resource WebServerInstance-2 ",
+                                "         --resource WebServerInstance02 ",
                                 "         --configsets All ",
                                 "         --region ",
                                 {
@@ -396,7 +396,7 @@
                                 {
                                     "Ref": "AWS::StackName"
                                 },
-                                "         --resource WebServerInstance-2 ",
+                                "         --resource WebServerInstance02 ",
                                 "         --region ",
                                 {
                                     "Ref": "AWS::Region"
@@ -567,7 +567,7 @@
                         "http://",
                         {
                             "Fn::GetAtt": [
-                                "WebServerInstance-1",
+                                "WebServerInstance01",
                                 "PublicIp"
                             ]
                         }
@@ -584,7 +584,7 @@
                         "http://",
                         {
                             "Fn::GetAtt": [
-                                "WebServerInstance-2",
+                                "WebServerInstance02",
                                 "PublicIp"
                             ]
                         }
