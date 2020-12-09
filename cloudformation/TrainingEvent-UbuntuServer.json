@@ -239,7 +239,7 @@
                 "Tags" : [
                     {"Key" : "Name", "Value" : "tomcat-web"},
                     {"Key" : "Environment", "Value" : { "Ref" : "Environment" }},
-                    {"Key" : "Owner", "Value" : { "Ref" : "Owner" }}
+                    {"Key" : "Owner", "Value" : { "Ref" : "owner" }}
                 ],
                 "UserData": {
                     "Fn::Base64": {
@@ -368,7 +368,7 @@
                 "Tags" : [
                     {"Key" : "Name", "Value" : "tomcat-web"},
                     {"Key" : "Environment", "Value" : { "Ref" : "Environment" }},
-                    {"Key" : "Owner", "Value" : { "Ref" : "Owner" }}
+                    {"Key" : "Owner", "Value" : { "Ref" : "owner" }}
                 ],
                 "UserData": {
                     "Fn::Base64": {
@@ -908,6 +908,7 @@
                 "HVMG2": "NOT_SUPPORTED"
             }
         }
-    }
+    },
+    "Environment": "dev"
 
 }
