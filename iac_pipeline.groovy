@@ -4,8 +4,8 @@ pipeline {
   stages {
     stage('Submit Stack') { 
       steps {
-        //sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-UbuntuServer.json' --stack-name TomCatWeb-Stack-Val --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName='2be93d5b-70f9-4db2-adc3-f307b7b86c48' SSHLocation=0.0.0.0/0"
-        sh "echo SKIPPING INFRASTRUCTURE CREATION/UPDATE for now .."
+        sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-UbuntuServer.json' --stack-name TomCatWeb-Stack-Val --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName='2be93d5b-70f9-4db2-adc3-f307b7b86c48' SSHLocation=0.0.0.0/0"
+        //sh "echo SKIPPING INFRASTRUCTURE CREATION/UPDATE for now .."
       }
     }
     stage('Update Inventory'){
