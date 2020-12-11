@@ -1,11 +1,11 @@
-//Declarative pipeline
+// Declarative pipeline
 pipeline {
   agent any
   stages {
     stage('Submit Stack') { 
       steps {
-        sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-UbuntuServer.json' --stack-name TomCatWeb-Stack-Val --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName='DevOpsKeyPair' SSHLocation=0.0.0.0/0"
-        //sh "echo SKIPPING INFRASTRUCTURE CREATION/UPDATE for now .."
+        //sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-UbuntuServer.json' --stack-name TomCatWeb-Stack-Val --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName='DevOpsKeyPair' SSHLocation=0.0.0.0/0"
+        sh "echo SKIPPING INFRASTRUCTURE CREATION/UPDATE for now .."
       }
     }
     stage('Update Inventory'){
