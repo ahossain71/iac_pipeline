@@ -237,7 +237,7 @@
                     }
                 ],
                 "Tags" : [
-                    {"Key" : "Name", "Value" : "tomcat-web01"}
+                    {"Key" : "Name", "Value" : "tomcat-node01"}
                 ],
                 "UserData": {
                     "Fn::Base64": {
@@ -364,7 +364,7 @@
                     }
                 ],
                 "Tags" : [
-                    {"Key" : "Name", "Value" : "tomcat-web02"}
+                    {"Key" : "Name", "Value" : "tomcat-node02"}
                 ],
                 "UserData": {
                     "Fn::Base64": {
