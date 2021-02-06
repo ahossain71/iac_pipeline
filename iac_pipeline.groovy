@@ -4,8 +4,12 @@ pipeline {
   stages {
     stage('Submit Stack') { 
       steps {
-          sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-UbuntuServer.json' --stack-name TomCatWeb-Stack-Val --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName='myTestKeyPair02' SSHLocation=0.0.0.0/0"
-          //sh "echo SKIPPING INFRASTRUCTURE CREATION/UPDATE for now .."
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_IDAKIA4N7WPXTNEXPLQEJK', passwordVariable: 'TYG5GX9Xleki29xMZsc1nybFp7uzoPo/in4siDPN']]) {
+              sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-UbuntuServer.json' --stack-name TomCatWeb-Stack-Val --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName='myTestKeyPair02' SSHLocation=0.0.0.0/0"
+              //sh "echo SKIPPING INFRASTRUCTURE CREATION/UPDATE for now .."
+            }//end withCredentials
+         }//end catcherror
       }
     }
     stage('Update Inventory'){
