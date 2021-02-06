@@ -5,11 +5,11 @@ pipeline {
     stage('Submit Stack') { 
       steps {
           catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-             //withCredentials([UsernamePasswordMultiBinding(credentialsId: 'Jenkins-server', keyFileVariable:'Jenkins-server')]) {
-              //sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-UbuntuServer.json' --stack-name TomCatWeb-Stack-Val --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName='myTestKeyPair02' SSHLocation=0.0.0.0/0"
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'Jenkins-server', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+              //sh "aws cloudformation deploy --template-file  '$workspace/cloudformation/TrainingEvent-UbuntuServer.json' --stack-name TomCatWeb-Stack-Val --region 'us-east-1' --parameter-overrides InstanceType=t2.micro KeyName=${myTestKeyPair02} SSHLocation=0.0.0.0/0"
               sh "aws s3 ls"
               //sh "echo SKIPPING INFRASTRUCTURE CREATION/UPDATE for now .."
-            //}//end withCredentials
+            }//end withCredentials
          }//end catcherror
       }
     }
