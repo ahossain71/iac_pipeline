@@ -7,8 +7,8 @@
   #regions: 
   #  - us-east-1
   #  - us-east-2
-  user : user
-  sudo : yes    
+  #user : user
+  #sudo : yes    
   tasks:
 
     #- name: List several EC2 instances according to their name tag
