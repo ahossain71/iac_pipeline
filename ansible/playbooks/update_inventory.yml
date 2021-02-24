@@ -27,7 +27,7 @@
   #      var: result
     
     - name : Execute script
-      command : '/usr/bin/python /etc/ansible/ec2.py ec2 --list'
+      command : '/usr/bin/python /etc/ansible/ec2.py --list'
       register: result 
     
     - debug:
