@@ -1,5 +1,5 @@
 ---
-- name: host file update - Local DNS setup across all the servers
+- name: host file update -  Local DNS setup across all the servers
   hosts: "localhost"
   gather_facts: yes
     
