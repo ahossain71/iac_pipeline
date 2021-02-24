@@ -17,13 +17,18 @@
     #      - us-east-2
     #  register: result
 
-  - name : Copy script
-    copy : 'src=/home/etc/ansible/ec2.py dest=/opt/root2/logchecker.py owner=root group=root mode=755'
+  #- name : Copy script
+  #  copy : 'src=/home/etc/ansible/ec2.py dest=/opt/root2/logchecker.py owner=root group=root mode=755'
   
-  - name : Execute script
-    command : '/usr/bin/python /opt/root2/logchecker.py'
-    - debug:
-        var: result
+  #- name : Execute script
+  #  command : '/usr/bin/python /opt/root2/logchecker.py'
+  #  - debug:
+  #      var: result
+    
+    - name : Execute script
+      command : '/usr/bin/python /etc/ansible/ec2.py ec2 --list' 
+      - debug:
+          var: result
 
     - name: Update the /etc/hosts file with node name
       tags: etchostsupdate
