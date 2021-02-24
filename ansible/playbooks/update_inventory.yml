@@ -26,9 +26,11 @@
   #      var: result
     
     - name : Execute script
-      command : '/usr/bin/python /etc/ansible/ec2.py ec2 --list' 
-      - debug:
-          var: result
+      command : '/usr/bin/python /etc/ansible/ec2.py ec2 --list'
+      register: result 
+    
+    - debug:
+        var: result
 
     #- name: Update the /etc/hosts file with node name
     #  tags: etchostsupdate
