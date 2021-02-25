@@ -28,8 +28,7 @@
     
     - name : Execute script
       #command : '/usr/bin/python /etc/ansible/ec2.py --list'
-      command: 'cd /home/etc/ansible'
-      command: 'ansible -i ec2.py tag_Name_tomcat-node* --list'
+      command: 'cd /home/etc/ansible | ansible -i ec2.py tag_Name_tomcat-node* --list'
       register: result 
     
     - debug:
