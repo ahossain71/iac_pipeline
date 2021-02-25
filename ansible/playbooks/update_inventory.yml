@@ -36,7 +36,7 @@
     
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
-        ansible_hostname: "{{ hostlist | select('match', '\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b' | list }}"
+        ansible_hostname: "{{ hostlist | select('match', '\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' | list }}"
 
     - debug:
         var: "{{ansible_hostname}}"
