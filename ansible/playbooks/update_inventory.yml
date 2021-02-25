@@ -30,6 +30,7 @@
       command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
       register: result 
     
+    - name: splitting stdout to make an ansible list of hosts
       set_fact:
         hostlist: result.stdout.split(',')
     
