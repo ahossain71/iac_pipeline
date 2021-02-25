@@ -28,10 +28,13 @@
     
     - name : Execute script
       command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
-      register: ansible_hostname 
+      register: result 
+    
+    set_fact:
+        hostlist: result.stdout.split(',')
     
     - debug:
-        var: ansible_hostname
+        var: hostlist
 
     - name: Update the /etc/hosts file with node name
       tags: etchostsupdate
