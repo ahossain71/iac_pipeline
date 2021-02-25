@@ -19,8 +19,8 @@ pipeline {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             //sh "echo SKIPPING Automated update of inventory file in lieu to manual update .."
              withCredentials([sshUserPrivateKey(credentialsId: 'a59a13e3-8e2f-4920-83c9-a49b576e5d58', keyFileVariable: 'myTestKeyPair02')]) {
-                sh 'python /etc/ansible/ec2.py --list'
-                //sh 'ansible-playbook ./ansible/playbooks/update_inventory.yml --user ubuntu --key-file ${myTestKeyPair02}'  
+                //sh 'python /etc/ansible/ec2.py --list'
+                sh 'ansible-playbook ./ansible/playbooks/update_inventory.yml --user ubuntu --key-file ${myTestKeyPair02}'  
             // sh '/etc/ansible/ec2.py --list'
            }//end withCredentials
           sh "exit 0"
