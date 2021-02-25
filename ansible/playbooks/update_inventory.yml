@@ -32,10 +32,14 @@
     
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
-        hostlist: result.stdout.split('\n')
+        hostlist: result.stdout.split(',')
     
+    - name: craeting a list of IP Addresses only from the hostlist variable
+      set_fact:
+        ansible_hostname: "{{ hostlist | select('match', '^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$' | list }}"
+
     - debug:
-        var: "{{hostlist}}"
+        var: "{{ansible_hostname}}"
 
     - name: Update the /etc/hosts file with node name
       tags: etchostsupdate
