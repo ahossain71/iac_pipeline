@@ -35,7 +35,7 @@
         hostlist: result.stdout.split(',')
     
     - debug:
-        var: hostlist
+        var: "{{hostlist}}"
 
     - name: Update the /etc/hosts file with node name
       tags: etchostsupdate
