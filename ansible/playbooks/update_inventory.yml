@@ -1,8 +1,9 @@
 ---
 - name: host file update -Local DNS setup across all the servers
   hosts: "localhost"
-  gather_facts: yes
-    
+  connection: local
+  become: false
+  gather_facts: true  
   ## plugin: amazon.aws.aws_ec2
   #regions: 
   #  - us-east-1
@@ -34,19 +35,13 @@
       set_fact:
         hostlist: result.stdout.split(',')
     
-    - name: Perform Checks to make sure this Playbook will complete successfully
-      hosts: localhost
-      connection: local
-      become: false
-      gather_facts: true
-      tasks:
-        - name: make sure packages required are installed on this control node
-          pip:
-            name:
-              - netaddr
-          check_mode: true
-          when: workshop_type == "networking"
-          register: package_stat
+    - name: make sure packages required are installed on this control node
+      pip:
+        name:
+          - netaddr
+      check_mode: true
+      when: workshop_type == "networking"
+      register: package_stat
 
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
