@@ -4,41 +4,21 @@
   connection: local
   become: false
   gather_facts: true  
-  ## plugin: amazon.aws.aws_ec2
-  #regions: 
-  #  - us-east-1
-  #  - us-east-2
-  #user : user
-  #sudo : yes    
+ 
   tasks:
 
-    #- name: List several EC2 instances according to their name tag
-    #  ec2_instance_info:
-    #    region:
-    #      - us-east-1
-    #      - us-east-2
-    #  register: result
-
-  #- name : Copy script
-  #  copy : 'src=/home/etc/ansible/ec2.py dest=/opt/root2/logchecker.py owner=root group=root mode=755'
-  
-  #- name : Execute script
-  #  command : '/usr/bin/python /opt/root2/logchecker.py'
-  #  - debug:
-  #     var: result
-    
     - name : Execute script
       command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
       register: result 
       debug:
-        var: "{{result}}"
+        var: result
     
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
         hostlist: result.stdout.split(',')
       register: hostlist 
       debug:
-        var: "{{hostlist}}"
+        var: hostlist
 
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
@@ -46,7 +26,7 @@
         ansible_hostname: "{{ hostlist | select('match','^[0-9].*$' ) | list }}"
       register: ansible_hostname
       debug:
-        var: "{{ansible_hostname}}"
+        var: ansible_hostname
 
     #- name: Update the /etc/hosts file with node name
     #  tags: etchostsupdate
