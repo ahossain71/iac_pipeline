@@ -34,6 +34,9 @@
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
         hostlist: result.stdout.split(',')
+        
+    - debug:
+        var: hostlist
 
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
