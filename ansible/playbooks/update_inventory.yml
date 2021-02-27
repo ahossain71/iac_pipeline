@@ -25,7 +25,7 @@
   #- name : Execute script
   #  command : '/usr/bin/python /opt/root2/logchecker.py'
   #  - debug:
-  #      var: result
+  #     var: result
     
     - name : Execute script
       command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
