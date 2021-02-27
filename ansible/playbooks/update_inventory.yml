@@ -35,13 +35,13 @@
       set_fact:
         hostlist: result.stdout.split(',')
     
-     #- name: make sure packages required are installed on this control node
-     # pip3:
-     #   name:
-     #     - netaddr
-     # check_mode: true
+    - name: make sure packages required are installed on this control node
+      pip3:
+        name:
+          - netaddr
+      check_mode: true
       #when: workshop_type == "networking"
-     # register: package_stat
+      register: package_stat
 
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
