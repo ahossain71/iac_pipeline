@@ -5,18 +5,17 @@
   gather_facts: true  
  
   tasks:
-
     - name : Execute script
       command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
       register: result 
-      debug:
+    - debug:
         var: result
 
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
         hostlist: result.stdout.split(',')
       register: hostlist 
-      debug:
+    - debug:
         var: hostlist
 
     - name: craeting a list of IP Addresses only from the hostlist variable
@@ -24,7 +23,7 @@
         # ansible_hostname: "{{ hostlist | ipaddr('address')}}"
         ansible_hostname: "{{ hostlist | select('match','^[0-9].*$' ) | list }}"
       register: ansible_hostname
-      debug:
+    - debug:
         var: ansible_hostname
 
     #- name: Update the /etc/hosts file with node name
