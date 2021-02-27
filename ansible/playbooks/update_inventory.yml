@@ -19,10 +19,8 @@
 
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
-        #ansible_hostname: "{{ hostlist | ipaddr('address')}}"
-        target_hosts: "{{ hostlist | reject('search','hosts') | list }}"
-        #target_hosts: "{{ ansible_hostname | select('match','^[0-9].*$' ) | list }}"
-      register: target_hosts
+          target_hosts: "{{ hostlist | reject('search','hosts') | list }}"
+       register: target_hosts
 
     - debug:
         var: target_hosts
