@@ -19,8 +19,8 @@
 
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
-          target_hosts: "{{ hostlist | reject('search','hosts') | list }}"
-       register: target_hosts
+        target_hosts: "{{ hostlist | reject('search','hosts') | list }}"
+      register: target_hosts
 
     - debug:
         var: target_hosts
