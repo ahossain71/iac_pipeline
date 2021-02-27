@@ -36,7 +36,7 @@
         hostlist: result.stdout.split(',')
     
     - name: make sure packages required are installed on this control node
-      pip3:
+      pip:
         name:
           - netaddr
       check_mode: true
