@@ -34,19 +34,11 @@
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
         hostlist: result.stdout.split(',')
-    
-    - name: make sure packages required are installed on this control node
-      pip:
-        name:
-          - netaddr
-      check_mode: true
-      #when: workshop_type == "networking"
-      register: package_stat
 
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
-        ansible_hostname: "{{ hostlist | ipaddr('address')}}"
-        #ansible_hostname: "{{ hostlist | select('match','(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)' ) | list }}"
+        #ansible_hostname: "{{ hostlist | ipaddr('address')}}"
+        ansible_hostname: "{{ hostlist | select('match','^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$' ) | list }}"
 
     - debug:
         var: "{{ansible_hostname}}"
