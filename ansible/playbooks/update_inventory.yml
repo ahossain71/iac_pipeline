@@ -40,7 +40,7 @@
         name:
           - netaddr
       check_mode: true
-      when: workshop_type == "networking"
+      #when: workshop_type == "networking"
       register: package_stat
 
     - name: craeting a list of IP Addresses only from the hostlist variable
