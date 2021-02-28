@@ -11,11 +11,14 @@
 
     - set_fact:
         #target_hosts: "{{ result.stdout | reject('search','host') | list }}" (\\.(?!$)|$)){4}$')
-        target_hosts: "{{ result.stdout_lines.split(',') | list }}"
+        target_hosts: "{{ result.stdout_lines | list }}"
       register: target_hosts
 
-    - debug:
-        var: target_hosts
+    - debug: msg="{{ item }}"
+      with_items: "{{ target_hosts }}"
+
+    #- debug:
+    #    var: target_hosts
 
     #- name: splitting stdout to make an ansible list of hosts
     #  set_fact:
