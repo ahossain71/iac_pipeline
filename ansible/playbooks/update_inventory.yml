@@ -15,15 +15,15 @@
       register: target_hosts
 
     - debug:
-        var: "{{target_hosts}}"
+        var: "{{target_hosts[0]}}"
 
-    - name: splitting stdout to make an ansible list of hosts
-      set_fact:
-        hostlist: target_hosts.split('\n')
-      register: hostlist
+    #- name: splitting stdout to make an ansible list of hosts
+    #  set_fact:
+    #    hostlist: target_hosts.split('\n')
+    #  register: hostlist
 
-    - debug:
-        var: "{{hostlist[0]}}"
+    #- debug:
+    #    var: "{{hostlist[0]}}"
 
     #-debug: msg="{{ item.stdout_lines }}"
     #  with_items: "{{ result }}"
