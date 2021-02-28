@@ -10,12 +10,17 @@
       register: result
 
     - debug:
-        var: result.results[0]
+        var: result
 
-    - name: splitting stdout to make an ansible list of hosts
-      set_fact:
-        hostlist: result.results[0]["stdout"]
-      register: hostlist
+    #- name: splitting stdout to make an ansible list of hosts
+    #  set_fact:
+    #    hostlist: result.results[0]["stdout"]
+    #  register: hostlist
+
+    - debug: msg="{{ item.stdout_lines }}"
+      with_items: "{{ result.results }}"
+     # loop_control:
+     #label: '...' 
 
     - debug:
         var: hostlist
