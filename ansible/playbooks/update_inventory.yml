@@ -15,7 +15,7 @@
       register: target_hosts
 
     - debug:
-        var: target_hosts
+        var: "{{target_hosts}}"
 
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
@@ -23,7 +23,7 @@
       register: hostlist
 
     - debug:
-        var: hostlist[0]
+        var: "{{hostlist[0]}}"
 
     #-debug: msg="{{ item.stdout_lines }}"
     #  with_items: "{{ result }}"
