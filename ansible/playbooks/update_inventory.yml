@@ -20,7 +20,7 @@
     - debug:
         var: hostlist
 
-    #- name: craeting a list of IP Addresses only from the hostlist variable
+    # - name: craeting a list of IP Addresses only from the hostlist variable
     #  set_fact:
     #    target_hosts: "{{ hostlist | select('search','^[0-9]') | list }}"
     #  register: target_hosts
