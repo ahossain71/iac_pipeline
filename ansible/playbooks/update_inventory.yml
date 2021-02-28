@@ -27,7 +27,7 @@
     #  register: hostlist
 
     - debug:
-        var:  target_hosts
+        var:  "{{ target_hosts | reject('search','host*') | list }}"
 
     #-debug: msg="{{ item.stdout_lines }}"
     #  with_items: "{{ result }}"
