@@ -10,20 +10,22 @@
       register: result
 
     - debug:
-        var: result
+        var: result.stdout
 
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
         hostlist: "{{ result.stdout }}"
       register: hostlist
 
+    - debug:
+        var: "{{ hostlist }}"
+
     #-debug: msg="{{ item.stdout_lines }}"
     #  with_items: "{{ result }}"
      #loop_control:
      #label: '...' 
 
-    - debug:
-        var: "{{hostlist}}"
+  
 
     # - name: craeting a list of IP Addresses only from the hostlist variable
     #  set_fact:
