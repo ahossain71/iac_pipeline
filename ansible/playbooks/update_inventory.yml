@@ -10,15 +10,16 @@
       register: result
 
     - set_fact:
-        #target_hosts: "{{ result.stdout | reject('search','host') | list }}" (\\.(?!$)|$)){4}$')
-        target_hosts: "{{ result.stdout_lines | list }}"
+        target_hosts: "{{ result.stdout_lines.ansible_facts.hosts | select('match','^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$') | list }}" 
+        #target_hosts: "{{ result.stdout_lines | list }}"
       register: target_hosts
 
     #- debug: msg="{{ item }}"
     #  with_items: "{{ target_hosts }}"
 
     - debug:
-        var: target_hosts.ansible_facts.target_hosts[1]
+        #var: target_hosts.ansible_facts.target_hosts[1]
+        var: target_hosts
 
     #- name: splitting stdout to make an ansible list of hosts
     #  set_fact:
