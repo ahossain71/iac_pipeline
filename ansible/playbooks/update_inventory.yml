@@ -14,7 +14,7 @@
 
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
-        hostlist: result.split(',')[0]
+        hostlist: result[0]
       register: hostlist 
 
     - debug:
