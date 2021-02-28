@@ -19,7 +19,7 @@
 
     - debug: msg="{{ item.stdout }}"
       with_items: "{{ result }}"
-     # loop_control:
+     #loop_control:
      #label: '...' 
 
     - debug:
