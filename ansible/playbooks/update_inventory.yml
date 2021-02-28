@@ -11,7 +11,7 @@
 
     - set_fact:
         #target_hosts: "{{ result.stdout | reject('search','host') | list }}"
-        target_hosts: "{{ result.stdout | select('match', '^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$') | list }}"
+        target_hosts: "{{ result.stdout | select('match', '^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$') | list }}"
       register: target_hosts
 
     - debug:
