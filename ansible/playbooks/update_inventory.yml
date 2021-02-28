@@ -14,11 +14,11 @@
 
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
-        hostlist: result.stdout.split(":")[1]
+        hostlist: result.stdout.split(":")
       register: hostlist 
 
     - debug:
-        var: hostlist
+        var: hostlist[1]
 
     # - name: craeting a list of IP Addresses only from the hostlist variable
     #  set_fact:
