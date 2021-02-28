@@ -18,7 +18,7 @@
       register: hostlist 
 
     - debug:
-        var: hostlist[1]
+        var: "{{hostlist[1]}}"
 
     # - name: craeting a list of IP Addresses only from the hostlist variable
     #  set_fact:
