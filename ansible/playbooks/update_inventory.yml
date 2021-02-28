@@ -18,7 +18,7 @@
     #  with_items: "{{ target_hosts }}"
 
     - debug:
-        var: target_hosts.ansible_facts.target_hosts[0]
+        var: target_hosts.ansible_facts.target_hosts[1]
 
     #- name: splitting stdout to make an ansible list of hosts
     #  set_fact:
