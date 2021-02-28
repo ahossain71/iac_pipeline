@@ -15,11 +15,11 @@
       register: hostlist 
     
     - debug:
-        var: hostlist
+        var: "{{hostlist}}"
 
     - name: craeting a list of IP Addresses only from the hostlist variable
       set_fact:
-        target_hosts: "{{ hostlist | reject('search','hosts') | list }}"
+        target_hosts: "{{ hostlist | reject('search','h') | list }}"
       register: target_hosts
 
     - debug:
