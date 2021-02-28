@@ -17,7 +17,7 @@
     #    hostlist: result.results[0]["stdout"]
     #  register: hostlist
 
-    - debug: msg="{{ item }}"
+    - debug: msg="{{ item["stdout"] }}"
       with_items: "{{ result }}"
      #loop_control:
      #label: '...' 
