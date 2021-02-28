@@ -11,7 +11,7 @@
 
     - set_fact:
         #target_hosts: "{{ result.stdout | reject('search','host') | list }}" (\\.(?!$)|$)){4}$')
-        target_hosts: '{{ result.stdout_lines | split(",") | list }}'
+        target_hosts: "{{ result.stdout_lines.split(',') | list }}"
       register: target_hosts
 
     - debug:
