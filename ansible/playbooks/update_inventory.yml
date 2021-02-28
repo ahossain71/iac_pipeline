@@ -15,7 +15,7 @@
       register: target_hosts
 
     - debug:
-        var: "{{target_hosts[0]}}"
+        var: target_hosts
 
     #- name: splitting stdout to make an ansible list of hosts
     #  set_fact:
