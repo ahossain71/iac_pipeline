@@ -14,7 +14,7 @@
 
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
-        hostlist: "{{ result.stdout | reject('serach', 'host') | list }}"
+        hostlist: "{{ result.stdout | reject('search', 'host') | list }}"
       register: hostlist
 
     #-debug: msg="{{ item.stdout_lines }}"
