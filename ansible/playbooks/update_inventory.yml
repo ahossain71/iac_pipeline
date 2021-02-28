@@ -9,16 +9,20 @@
       command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
       register: result
 
+    - set_fact:
+        target_hosts: "{{ result.stdout | reject('search','host') | list }}"
+      register: target_hosts
+
     - debug:
-        var: result.stdout
+        var: target_hosts
 
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
-        hostlist: result.stdout
+        hostlist: target_hosts.split('\n')
       register: hostlist
 
     - debug:
-        var: hostlist
+        var: hostlist[0]
 
     #-debug: msg="{{ item.stdout_lines }}"
     #  with_items: "{{ result }}"
