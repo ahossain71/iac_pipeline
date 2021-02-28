@@ -18,7 +18,7 @@
     #  register: hostlist
 
     - debug: msg="{{ item.stdout_lines }}"
-      with_items: "{{ result.results }}"
+      with_items: "{{ result }}"
      # loop_control:
      #label: '...' 
 
