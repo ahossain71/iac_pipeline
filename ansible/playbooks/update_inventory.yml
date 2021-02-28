@@ -17,9 +17,9 @@
     #- debug: msg="{{ item }}"
     #  with_items: "{{ target_hosts }}"
 
-    - set_fact:
-        target_hosts: "{{ hosts_list.ansible_facts.hosts_list | select ('match','^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$') | list }}"
-      register: target_hosts
+    #- set_fact:
+    #    target_hosts: "{{ hosts_list.ansible_facts.hosts_list | select ('match','^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$') | list }}"
+    #  register: target_hosts
 
     #- name: splitting stdout to make an ansible list of hosts
     #  set_fact:
@@ -27,7 +27,7 @@
     #  register: hostlist
 
     - debug:
-        var:  "{{ target_hosts | reject('search','host*') | list }}"
+        var:  "{{ hosts_list | reject('search','host*') | list }}"
 
     #-debug: msg="{{ item.stdout_lines }}"
     #  with_items: "{{ result }}"
