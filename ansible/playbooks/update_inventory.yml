@@ -23,7 +23,7 @@
      #label: '...' 
 
     - debug:
-        var: "{{hostlist}}"
+        var: "{{hostlist.stdout_lines}}"
 
     # - name: craeting a list of IP Addresses only from the hostlist variable
     #  set_fact:
