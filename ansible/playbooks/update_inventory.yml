@@ -11,22 +11,22 @@
 
     - debug:
         var: result
-        
+
     - name: splitting stdout to make an ansible list of hosts
       set_fact:
-        hostlist: result.stdout.split(',')
+        hostlist: result.stdout.hosts
       register: hostlist 
 
     - debug:
-        var: "{{hostlist}}"
+        var: hostlist
 
-    - name: craeting a list of IP Addresses only from the hostlist variable
-      set_fact:
-        target_hosts: "{{ hostlist | select('search','^[0-9]') | list }}"
-      register: target_hosts
+    #- name: craeting a list of IP Addresses only from the hostlist variable
+    #  set_fact:
+    #    target_hosts: "{{ hostlist | select('search','^[0-9]') | list }}"
+    #  register: target_hosts
 
-    - debug:
-        var: target_hosts
+    #- debug:
+    #    var: target_hosts
 
     #- name: Update the /etc/hosts file with node name
     #  tags: etchostsupdate
