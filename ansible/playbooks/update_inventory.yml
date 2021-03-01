@@ -18,7 +18,7 @@
         var: hosts_list.ansible_facts.hosts_list[0]
   
     - set_fact:
-        filtered_list: "{{ hosts_list.ansible_facts.hosts_list[0] | reject('search','h') | list }}"
+        filtered_list: "{{ hosts_list.ansible_facts.hosts_list | reject('search','  hosts (2):') | list }}"
       register: filtered_list 
 
     # - name: add several users
