@@ -15,7 +15,7 @@
       register: hosts_list
     
     - debug:
-        var: hosts_list.ansible_facts.hosts_list
+        var: hosts_list.ansible_facts.hosts_list[0]
   
     - set_fact:
         filtered_list: "{{ hosts_list.ansible_facts.hosts_list[0] | reject('search','h') | list }}"
