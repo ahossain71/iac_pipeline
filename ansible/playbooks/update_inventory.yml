@@ -21,7 +21,7 @@
         filtered_list: "{{ hosts_list.ansible_facts.hosts_list.hosts | reject('search','h') | list }}"
       register: filtered_list 
 
-    #- name: add several users
+    # - name: add several users
     #  web_hosts: "{{ item }}"
     #  when: "{{ item }}" != 'host (2):'
     #  with_items: "{{ target_hosts }}"
