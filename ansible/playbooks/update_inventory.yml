@@ -15,14 +15,14 @@
       register: hosts_list
     
     - debug:
-        vars:  hosts_list
+        vars: "{{ hosts_list }}"
 
     - set_fact:
         target_hosts: "{{ hosts_list.ansible_facts.hosts_list }}"
       register: target_hosts
 
     - debug:
-        vars: target_hosts
+        vars: "{{ target_hosts }}"
     
     - set_fact:
         filtered_list: "{{ target_hosts | reject('search','h') | list }}"
