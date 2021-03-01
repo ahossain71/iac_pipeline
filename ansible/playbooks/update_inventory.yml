@@ -14,28 +14,27 @@
         hosts_list: "{{ result.stdout_lines | list }}"
       register: hosts_list
 
-    #- debug: msg="{{ item }}"
-    #  with_items: "{{ target_hosts }}"
-
     - set_fact:
         target_hosts: "{{ hosts_list.ansible_facts.hosts_list }}"
       register: target_hosts
 
-    #- name: splitting stdout to make an ansible list of hosts
-    #  set_fact:
-    #    hostlist: target_hosts.split('\n')
-    #  register: hostlist
+    - name: add several users
+      web_hosts: "{{ item }}"
+      when: "{{ item.find('host') }}" == -1
+      with_items: "{{ target_hosts }}"
 
-    - debug:
-        var:  "{{ target_hosts | reject('search','host') | list }}"
+    - debug: msg="{{ item }}"
+      with_items: "{{ web_hosts }}"
+
+
+    #- debug:
+       # var:  "{{ target_hosts | reject('search','host') | list }}"
         #var: target_hosts
 
-    #-debug: msg="{{ item.stdout_lines }}"
+    #- debug: msg="{{ item.stdout_lines }}"
     #  with_items: "{{ result }}"
      #loop_control:
      #label: '...' 
-
-  
 
     # - name: craeting a list of IP Addresses only from the hostlist variable
     #  set_fact:
