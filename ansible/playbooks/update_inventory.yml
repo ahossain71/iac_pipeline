@@ -15,16 +15,20 @@
       register: hosts_list
 
     - set_fact:
-        target_hosts: "{{ hosts_list.ansible_facts.hosts_list }}"
+      target_hosts: "{{ hosts_list.ansible_facts.hosts_list }}"
       register: target_hosts
+    
+    - set_fact:
+      filtered_list: "{{ target_hosts | reject('search','h') | list }}"
+      register: filtered_list 
 
-    - name: add several users
-      web_hosts: "{{ item }}"
-      when: trim({{ item }}) != "host (2):"
-      with_items: "{{ target_hosts }}"
+    #- name: add several users
+    #  web_hosts: "{{ item }}"
+    #  when: "{{ item }}" != 'host (2):'
+    #  with_items: "{{ target_hosts }}"
 
     - debug: msg="{{ item }}"
-      with_items: "{{ web_hosts }}"
+      with_items: "{{ filtered_list }}"
 
     #- debug:
        # var:  "{{ target_hosts | reject('search','host') | list }}"
