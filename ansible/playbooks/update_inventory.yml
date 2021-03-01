@@ -25,7 +25,8 @@
         #filtered_list: "{{ hosts_list.ansible_facts.hosts_list | reject('search','hosts') | list }}"
     
     - name: add host Ip addresses
-      filtered_list: "{{ filtered_list +[item] }}"
+      set_fact:
+        filtered_list: "{{ filtered_list +[item] }}"
       when: "{{ item.index > 0}}"
       with_indexed_items: "{{ target_hosts }}"
 
