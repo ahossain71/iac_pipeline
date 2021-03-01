@@ -30,8 +30,8 @@
       when: "{{ item.index > 0}}"
       with_indexed_items: "{{  hosts_list.ansible_facts.hosts_list }}"
 
-    - debug: msg="{{ item }}"
-      with_items: "{{ filtered_list }}"
+    - debug:
+        var: "{{ filtered_list }}"
 
     #- debug:
        # var:  "{{ target_hosts | reject('search','host') | list }}"
