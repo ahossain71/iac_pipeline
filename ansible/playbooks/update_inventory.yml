@@ -18,9 +18,9 @@
         var: hosts_list.ansible_facts.hosts_list[0]
   
     - set_fact:
-        filtered_list: "{{ hosts_list.ansible_facts.hosts_list | reject('search','h') | list }}"
-      register: filtered_list 
-
+        filtered_list: "{{ hosts_list.ansible_facts.hosts_list  | ansible.netcommon.ipaddr }}"
+        #filtered_list: "{{ hosts_list.ansible_facts.hosts_list | reject('search','hosts') | list }}"
+    
     # - name: add several users
     #  web_hosts: "{{ item }}"
     #  when: "{{ item }}" != 'host (2):'
