@@ -15,16 +15,16 @@
       register: hosts_list
          
     - set_fact: 
-        filtered_list: []
+        hostvars: []
       
     - name: add host Ip addresses
       set_fact:
-        filtered_list: "{{ filtered_list +[item.1] }}"
+        hostvars: "{{ hostvars +[item.1] }}"
       when: item.0 > 0
       with_indexed_items: "{{  hosts_list.ansible_facts.hosts_list }}"
 
     - debug:
-        var: filtered_list
+        var: hostvars
 
     - name: Update the ../inventory/hosts file with node name
       tags: inventoryhostsupdate
