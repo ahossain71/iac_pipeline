@@ -20,15 +20,15 @@
     - set_fact: 
         filtered_list: []
   
-    - set_fact:
-        filtered_list: "{{ hosts_list.ansible_facts.hosts_list  | ansible.netcommon.ipaddr }}"
-        #filtered_list: "{{ hosts_list.ansible_facts.hosts_list | reject('search','hosts') | list }}"
+    #- set_fact:
+    #    filtered_list: "{{ hosts_list.ansible_facts.hosts_list  | ansible.netcommon.ipaddr }}"
+    #    #filtered_list: "{{ hosts_list.ansible_facts.hosts_list | reject('search','hosts') | list }}"
     
     - name: add host Ip addresses
       set_fact:
         filtered_list: "{{ filtered_list +[item] }}"
       when: "{{ item.index > 0}}"
-      with_indexed_items: "{{ target_hosts }}"
+      with_indexed_items: "{{  hosts_list.ansible_facts.hosts_list }}"
 
     - debug: msg="{{ item }}"
       with_items: "{{ filtered_list }}"
