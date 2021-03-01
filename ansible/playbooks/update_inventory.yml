@@ -20,12 +20,11 @@
 
     - name: add several users
       web_hosts: "{{ item }}"
-      when: "{{ item.find('host') }}" == -1
+      when: "{{ item }}".find('host') == -1
       with_items: "{{ target_hosts }}"
 
     - debug: msg="{{ item }}"
       with_items: "{{ web_hosts }}"
-
 
     #- debug:
        # var:  "{{ target_hosts | reject('search','host') | list }}"
