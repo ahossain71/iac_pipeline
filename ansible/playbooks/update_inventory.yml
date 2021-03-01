@@ -20,7 +20,7 @@
 
     - name: add several users
       web_hosts: "{{ item }}"
-      when: "{{ item }}".find('host') == -1
+      when: "{{ item }}" contains 'host'
       with_items: "{{ target_hosts }}"
 
     - debug: msg="{{ item }}"
