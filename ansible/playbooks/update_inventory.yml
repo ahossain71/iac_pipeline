@@ -26,9 +26,9 @@
     
     - name: add host Ip addresses
       set_fact:
-        filtered_list: "{{ filtered_list +item }}"
-      when: "{{'hosts' in item == -1}}"
-      with_items: "{{  hosts_list.ansible_facts.hosts_list }}"
+        filtered_list: "{{ filtered_list +item.item }}"
+      when: "{{item.index > 0}}"
+      with_indexed_items: "{{  hosts_list.ansible_facts.hosts_list }}"
 
     - debug:
         var: filtered_list
