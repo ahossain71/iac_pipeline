@@ -3,7 +3,7 @@
   connection: local
   become: false
   gather_facts: true  
- 
+  
   tasks:
     - name : Execute script
       command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
@@ -16,15 +16,18 @@
     
     - debug:
         var: hosts_list.ansible_facts.hosts_list[0]
+    
+    - set_fact: 
+        filtered_list: []
   
     - set_fact:
         filtered_list: "{{ hosts_list.ansible_facts.hosts_list  | ansible.netcommon.ipaddr }}"
         #filtered_list: "{{ hosts_list.ansible_facts.hosts_list | reject('search','hosts') | list }}"
     
-    # - name: add several users
-    #  web_hosts: "{{ item }}"
-    #  when: "{{ item }}" != 'host (2):'
-    #  with_items: "{{ target_hosts }}"
+    - name: add host Ip addresses
+      filtered_list: "{{ filtered_list +[item] }}"
+      when: "{{ item.index > 0}}"
+      with_indexed_items: "{{ target_hosts }}"
 
     - debug: msg="{{ item }}"
       with_items: "{{ filtered_list }}"
