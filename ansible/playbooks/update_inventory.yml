@@ -41,4 +41,4 @@
       with_items: "{{groups['tomcatnodes']}}"
 
     - debug:
-      var: inventoryhostsupdate
+        var: inventoryhostsupdate
