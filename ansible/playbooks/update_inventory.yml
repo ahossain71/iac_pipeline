@@ -13,6 +13,9 @@
         #target_hosts: "{{ result.stdout_lines.ansible_facts.hosts | select('match','^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$') | list }}" 
         hosts_list: "{{ result.stdout_lines | list }}"
       register: hosts_list
+
+    - debug:
+        var: hosts_list
          
     - set_fact: 
         hostvars: []
@@ -21,7 +24,7 @@
       set_fact:
         hostvars: "{{ hostvars +[item.1] }}"
       when: item.0 > 0
-      with_indexed_items: "{{  hosts_list.ansible_facts.hosts }}"
+      with_indexed_items: "{{  hosts_list.ansible_facts.hosts_list }}"
 
     - debug:
         var: hostvars
