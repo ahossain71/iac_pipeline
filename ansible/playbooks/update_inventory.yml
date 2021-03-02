@@ -21,7 +21,7 @@
       set_fact:
         hostvars: "{{ hostvars +[item.1] }}"
       when: item.0 > 0
-      with_indexed_items: "{{  hosts_list.ansible_facts.hosts_list }}"
+      with_indexed_items: "{{  hosts_list.ansible_facts.hosts }}"
 
     - debug:
         var: hostvars
