@@ -7,7 +7,7 @@
    - set_fact:
        tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
     
-- hosts: "{{ tomcatnodes }}"
+  hosts: "{{ tomcatnodes }}"
   become: yes               # If to escalate privilege
   become_method: sudo       # Set become method
   remote_user: ubuntu       # Update username for remote server
