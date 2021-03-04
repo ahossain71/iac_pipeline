@@ -45,7 +45,7 @@
         var: target_hosts
 
     - lineinfile:
-        path: ../inventory/group_vars/all.yml
+        path: $Workspace/ansible/inventory/group_vars/all.yml
         regexp: '^target_hosts:'
         line: 'target_hosts: [{{target_hosts}}]'
 
