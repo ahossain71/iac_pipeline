@@ -5,11 +5,7 @@
   gather_facts: true  
   
   tasks:
-    - name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
-      include_vars:
-        file: ../inventory/group_vars/all.yml
-        name: target_hosts
-
+   
     - name : Execute script
       command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
       register: result
