@@ -18,8 +18,11 @@
     - debug:
         var: hosts_list
          
-    - set_fact: 
-        target_hosts: []
+    #- set_fact: 
+    #    target_hosts: []
+    - name: Include var target_hosts from gloabal vars file
+      include_vars: '../inventory/group_vars/all.yml'
+
       
     #- name: add host Ip addresses to gloabal variable tomcatnodes
     #  set_fact:
