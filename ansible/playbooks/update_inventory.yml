@@ -40,7 +40,6 @@
     - debug:
         var: "{{ hostvars['variable_holder']['target_hosts'] }}" 
 
-
     #- name: Update the ../inventory/hosts file with node name
     #  tags: inventoryhostsupdate
     #  become: yes
