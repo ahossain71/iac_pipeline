@@ -1,5 +1,5 @@
 ---
-- hosts: "{{target_hosts}}"
+- hosts: localhost
 
   tasks:
 
