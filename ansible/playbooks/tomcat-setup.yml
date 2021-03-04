@@ -2,7 +2,7 @@
 - name: Tomcat deployment playbook
   hosts: localhot      # Inventory hosts group / server to act on
 
- tasks:
+  tasks:
 
    - set_fact:
        tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
