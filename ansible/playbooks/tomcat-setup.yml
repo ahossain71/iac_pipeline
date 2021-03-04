@@ -5,7 +5,7 @@
 
     - name: Include var target_hosts from gloabal vars file
       include_vars:
-        file: $Workspace/ansible/inventory/group_vars/all.yml
+        file: '../inventory/group_vars/all.yml'
         name: target_hosts
 
     - set_fact:
