@@ -8,13 +8,10 @@
         file: '../inventory/group_vars/all.yml'
         name: target_hosts
 
-    - set_fact:
-        tomcatnodes: "{{target_hosts}}"
-
     - debug:
-        var: "{{tomcatnodes}}"
+        var: "{{target_hosts}}"
 
-- hosts: "{{tomcatnodes}}"    
+- hosts: target_hosts    
   become: yes               # If to escalate privilege
   become_method: sudo       # Set become method
   remote_user: ubuntu       # Update username for remote server
