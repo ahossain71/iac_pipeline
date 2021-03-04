@@ -7,9 +7,9 @@
       include_vars: '../inventory/group_vars/all.yml'
  
     - debug:
-        var: "{{ target_hosts[0] }}"
+        var: target_hosts[0]
 
-- hosts:  "{{ target_hosts[0] }}"  
+- hosts:  target_hosts[0]  
   become: yes               # If to escalate privilege
   become_method: sudo       # Set become method
   remote_user: ubuntu       # Update username for remote server
