@@ -47,7 +47,7 @@
     - lineinfile:
         path: '../inventory/group_vars/all.yml'
         regexp: '^target_hosts:'
-        line: 'target_hosts: {{target_hosts}}'
+        line: 'target_hosts: {{ target_hosts }}'
 
 
     #- name: Update the ../inventory/hosts file with node name
