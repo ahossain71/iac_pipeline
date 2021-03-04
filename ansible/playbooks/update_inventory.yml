@@ -37,8 +37,11 @@
         name: "variable_holder"
         tomcatnodes:  "{{ target_hosts }}"
   
+    - set_fact:
+        tomcastnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
+
     - debug:
-        var: "{{ hostvars['variable_holder']['tomcatnodes'] }}" 
+        var: tomcastnodes
 
     #- name: Update the ../inventory/hosts file with node name
     #  tags: inventoryhostsupdate
