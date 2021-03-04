@@ -1,7 +1,8 @@
 ---
 - name: Tomcat deployment playbook
-  #hosts: tag_Name_tomcat-node01       # Inventory hosts group / server to act on
-  set_fact:
+  hosts: localhot      # Inventory hosts group / server to act on
+  
+- set_fact:
     tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
     
   hosts: tomcatnodes
