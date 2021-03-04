@@ -6,10 +6,13 @@
     - name: Ansible remove words example
       replace:
         path: '../inventory/group_vars/all.yml'
-        regexp: "u' "
+        regexp: "u'  "
       replace:
         path: '../inventory/group_vars/all.yml'
         regexp: "'"
+      replace:
+        path: '../inventory/group_vars/all.yml'
+        regexp: ","
 
     - name: Include var target_hosts from gloabal vars file
       include_vars: '../inventory/group_vars/all.yml'
