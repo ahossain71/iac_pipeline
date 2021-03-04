@@ -8,8 +8,11 @@
 
     - name: Ansible remove words example
       set_fact:
-         target_hosts: "{{target_hosts | replace(' ', '') | replace(',', '') | replace(''', '') }}"
-  
+         target_hosts: "{{target_hosts | replace('u''', '')}}"
+         target_hosts: "{{target_hosts | replace(' ', '') }}"
+         target_hosts: "{{target_hosts | replace(',', '') }}"
+         target_hosts: "{{target_hosts | replace(''', '') }}"
+
     - debug:
         var: target_hosts
 
