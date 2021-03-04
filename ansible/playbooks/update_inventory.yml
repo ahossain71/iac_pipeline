@@ -43,6 +43,8 @@
     - debug:
         var: target_hosts
 
+    
+
     #- name: Update the ../inventory/hosts file with node name
     #  tags: inventoryhostsupdate
     #  become: yes
