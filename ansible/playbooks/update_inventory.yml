@@ -22,8 +22,8 @@
     - debug:
         var: hosts_list
          
-    #- set_fact: 
-    #    target_hosts: []
+    - set_fact: 
+        target_hosts: []
       
     #- name: add host Ip addresses to gloabal variable tomcatnodes
     #  set_fact:
