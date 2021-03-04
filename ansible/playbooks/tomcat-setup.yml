@@ -1,13 +1,11 @@
 ---
-- name: Tomcat deployment playbook
-  hosts: localhot      # Inventory hosts group / server to act on
+- hosts: localhot     
 
   tasks:
-
-   - set_fact:
-       tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
+    - set_fact:
+        tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"   # Inventory hosts group / server to act on
     
-  hosts: "{{ tomcatnodes }}"
+- hosts: "{{ tomcatnodes }}"
   become: yes               # If to escalate privilege
   become_method: sudo       # Set become method
   remote_user: ubuntu       # Update username for remote server
