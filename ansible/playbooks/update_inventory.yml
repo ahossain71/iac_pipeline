@@ -17,8 +17,8 @@
     - debug:
         var: hosts_list
          
-    - set_fact: 
-        target_hosts: []
+    #- set_fact: 
+    #    target_hosts: []
       
     #- name: add host Ip addresses to gloabal variable tomcatnodes
     #  set_fact:
@@ -32,16 +32,16 @@
       when: item.0 > 0
       with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
-    - name: add variables to dummy host
-      add_host:
-        name: "variable_holder"
-        tomcatnodes:  "{{ target_hosts }}"
+    #- name: add variables to dummy host
+    #  add_host:
+    #    name: "variable_holder"
+    #    tomcatnodes:  "{{ target_hosts }}"
   
-    - set_fact:
-        tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
+    #- set_fact:
+    #    tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
 
     - debug:
-        var: tomcatnodes
+        var: target_hosts
 
     #- name: Update the ../inventory/hosts file with node name
     #  tags: inventoryhostsupdate
