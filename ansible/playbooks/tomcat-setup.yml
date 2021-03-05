@@ -8,15 +8,12 @@
 
     - name: Ansible remove words example
       set_fact:
-         target_hosts: "{{target_hosts | replace('u\'', '')}}"
-         target_hosts: "{{target_hosts | replace(' ', '') }}"
-         target_hosts: "{{target_hosts | replace(',', '') }}"
-         target_hosts: "{{target_hosts | replace('\'', '') }}"
-
+         target_hosts: "{{ target_hosts }}"
+  
     - debug:
-        var: target_hosts
+        var: target_hosts[1]
 
-- hosts:  target_hosts  
+- hosts:  target_hosts[1]  
   become: yes               # If to escalate privilege
   become_method: sudo       # Set become method
   remote_user: ubuntu       # Update username for remote server
