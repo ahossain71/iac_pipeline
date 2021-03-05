@@ -8,10 +8,10 @@
 
     - name: Ansible remove words example
       set_fact:
-         target_hosts: "{{ target_hosts }}"
+         target_hosts: "{{ target_hosts | replace('u', '')}}"
   
     - debug:
-        var: target_hosts[1]
+        var: "target_hosts"
 
 - hosts:  target_hosts[1]  
   become: yes               # If to escalate privilege
