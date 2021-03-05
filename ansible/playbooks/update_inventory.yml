@@ -30,16 +30,12 @@
     #  when: item.0 > 0
     #  with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
-    #- name: set a list variable with the hosts_list
-    #  set_fact:
-    #    target_hosts: "{{ target_hosts + [item.1] }}"
-    #  when: item.0 > 0
-    #  with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
-
     - name: set a list variable with the hosts_list
       set_fact:
-        target_hosts: "{{ target_hosts + [item] }}"
-      with_items: "{{ hosts_list.ansible_facts.hosts_list }}"
+        target_hosts: "{{ target_hosts + [item.1] }}"
+      when: item.0 > 0
+      with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
+
 
     #- name: add variables to dummy host
     #  add_host:
