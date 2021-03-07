@@ -8,7 +8,7 @@
         name: targets
 
     - debug:
-        var: "{{ targets.target_hosts }}"
+        var: "{{ target_hosts }}"
     
     #- name: Ansible remove words example
     #  set_fact:
