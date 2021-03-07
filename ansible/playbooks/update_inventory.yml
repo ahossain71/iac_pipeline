@@ -18,8 +18,8 @@
     - debug:
         var: hosts_list
          
-    # - set_fact: 
-    #    target_hosts: []
+    - set_fact: 
+        target_hosts: []
        
     #- name: add host Ip addresses to gloabal variable tomcatnodes
     #  set_fact:
@@ -27,14 +27,14 @@
     #  when: item.0 > 0
     #  with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
-    - name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
+    - name: Include vars of ../inventory/group_vars/all.yml into the 'globalvars' variable.
       include_vars:
         file: '../inventory/group_vars/all.yml'
-        name: targets
+        name: globalvars
 
     - name: set a list variable with the hosts_list
       set_fact:
-        targets.target_hosts: "{{ targets.target_hosts + [item] }}"
+        target_hosts: "{{ target_hosts + [item] }}"
       when: item > 0
       with_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
@@ -43,11 +43,11 @@
     #    name: "variable_holder"
     #    tomcatnodes:  "{{ target_hosts }}"
   
-    #- set_fact:
-    #    targets.target_hosts: "{{ target_hosts}}"
+    - set_fact:
+        globalvars.target_hosts: "{{ target_hosts}}"
 
     - debug:
-        var: targets.target_hosts
+        var: "{{ globalvars.target_hosts }}"
 
     #- lineinfile:
     #    path: '../inventory/group_vars/all.yml'
