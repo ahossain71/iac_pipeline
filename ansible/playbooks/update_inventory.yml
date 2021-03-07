@@ -47,7 +47,7 @@
         globalvars.target_hosts: "{{ target_hosts}}"
 
     - debug:
-        var: "{{ globalvars.target_hosts }}"
+        var: "{{ target_hosts }}"
 
     #- lineinfile:
     #    path: '../inventory/group_vars/all.yml'
