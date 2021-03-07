@@ -32,8 +32,8 @@
 
     - name: set a list variable with the hosts_list
       set_fact:
-        target_hosts: "{{ target_hosts + [item] }}"
-     # when: item.0 > 0
+        target_hosts: "{{ target_hosts + [item.1] }}"
+      when: item.0 > 0
       with_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
     #- name: add variables to dummy host
