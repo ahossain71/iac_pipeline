@@ -33,9 +33,8 @@
     - name: set a list variable with the hosts_list
       set_fact:
         target_hosts: "{{ target_hosts + [item.1] }}"
-      when: item.0 > 0
-      with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
-
+     # when: item.0 > 0
+      with_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
     #- name: add variables to dummy host
     #  add_host:
@@ -45,13 +44,13 @@
     #- set_fact:
     #    tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
 
-    - debug:
-        var: target_hosts
+    #- debug:
+    #    var: target_hosts
 
-    - lineinfile:
-        path: '../inventory/group_vars/all.yml'
-        regexp: '^target_hosts:'
-        line: 'target_hosts: {{ target_hosts }}'
+    #- lineinfile:
+    #    path: '../inventory/group_vars/all.yml'
+    #    regexp: '^target_hosts:'
+    #    line: 'target_hosts: {{ target_hosts }}'
 
 
     #- name: Update the ../inventory/hosts file with node name
