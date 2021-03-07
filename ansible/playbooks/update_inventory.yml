@@ -27,6 +27,11 @@
     #  when: item.0 > 0
     #  with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
+    - name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
+      include_vars:
+        file: '../ansible/inventory/group_vars/all.yml'
+        name: targets
+
     - name: set a list variable with the hosts_list
       set_fact:
         target_hosts: "{{ target_hosts + [item] }}"
@@ -38,8 +43,8 @@
     #    name: "variable_holder"
     #    tomcatnodes:  "{{ target_hosts }}"
   
-    #- set_fact:
-    #    tomcatnodes: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
+    - set_fact:
+        targets.target_hosts: "{{ target_hosts}}"
 
     #- debug:
     #    var: target_hosts
