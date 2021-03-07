@@ -6,6 +6,10 @@
     - name: Include var target_hosts from gloabal vars file
       include_vars: '../inventory/group_vars/all.yml'
 
+    - name: Ansible remove words example
+      set_fact:
+         target_hosts: "{{ target_hosts }}"
+
     #- name: Ansible remove words example
     #  set_fact:
     #     target_hosts: "{{ target_hosts | replace('u'  ', '') }}"
