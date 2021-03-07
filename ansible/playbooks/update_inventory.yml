@@ -44,7 +44,7 @@
     #    tomcatnodes:  "{{ target_hosts }}"
   
     - set_fact:
-        globalvars.target_hosts: "{{ target_hosts}}"
+        target_hosts: "{{ target_hosts}}"
 
     - debug:
         var: "{{ target_hosts }}"
