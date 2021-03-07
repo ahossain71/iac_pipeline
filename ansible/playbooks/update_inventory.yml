@@ -34,7 +34,7 @@
 
     - name: set a list variable with the hosts_list
       set_fact:
-        target_hosts: "{{ target_hosts + [item] }}"
+        targets.target_hosts: "{{ targets.target_hosts + [item] }}"
       when: item > 0
       with_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
@@ -43,11 +43,11 @@
     #    name: "variable_holder"
     #    tomcatnodes:  "{{ target_hosts }}"
   
-    - set_fact:
-        targets.target_hosts: "{{ target_hosts}}"
+    #- set_fact:
+    #    targets.target_hosts: "{{ target_hosts}}"
 
-    #- debug:
-    #    var: target_hosts
+    - debug:
+        var: targets.target_hosts
 
     #- lineinfile:
     #    path: '../inventory/group_vars/all.yml'

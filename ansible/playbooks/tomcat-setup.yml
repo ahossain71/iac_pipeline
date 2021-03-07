@@ -7,9 +7,6 @@
         file: '../inventory/group_vars/all.yml'
         name: targets
 
-    - name: Include var target_hosts from gloabal vars file
-      include_vars: '$Workspace/ansible/inventory/group_vars/all.yml'
-
     - debug:
         var: "{{ targets.target_hosts }}"
     
