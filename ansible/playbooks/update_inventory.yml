@@ -21,7 +21,7 @@
     - set_fact: 
         target_hosts: []
        
-    #- name: add host Ip addresses to gloabal variable tomcatnodes
+    # - name: add host Ip addresses to gloabal variable tomcatnodes
     #  set_fact:
     #    tomcatnodes: "{{ target_hosts + [item.1] }}"
     #  when: item.0 > 0
