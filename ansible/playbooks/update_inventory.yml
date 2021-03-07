@@ -18,12 +18,9 @@
     - debug:
         var: hosts_list
          
-    #- set_fact: 
+    # - set_fact: 
     #    target_hosts: []
-    - name: Include var target_hosts from gloabal vars file
-      include_vars: '../inventory/group_vars/all.yml'
-
-      
+       
     #- name: add host Ip addresses to gloabal variable tomcatnodes
     #  set_fact:
     #    tomcatnodes: "{{ target_hosts + [item.1] }}"
@@ -32,8 +29,8 @@
 
     - name: set a list variable with the hosts_list
       set_fact:
-        target_hosts: "{{ target_hosts + [item.1] }}"
-      when: item.0 > 0
+        target_hosts: "{{ target_hosts + [item] }}"
+      when: item > 0
       with_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
     #- name: add variables to dummy host

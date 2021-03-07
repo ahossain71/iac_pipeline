@@ -6,12 +6,14 @@
     - name: Include var target_hosts from gloabal vars file
       include_vars: '../inventory/group_vars/all.yml'
 
-    - name: Ansible remove words example
-      set_fact:
-        target_hosts: "{{ target_hosts }}"
-    
     - debug:
-        var: "target_hosts"
+        var: "{{ target_hosts }}"
+    #- name: Ansible remove words example
+    #  set_fact:
+    #    target_hosts: "{{ target_hosts }}"
+    
+    #- debug:
+    #    var: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
 
     #- name: Ansible remove words example
     #  set_fact:
