@@ -29,7 +29,7 @@
 
     - name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
       include_vars:
-        file: '../ansible/inventory/group_vars/all.yml'
+        file: '../inventory/group_vars/all.yml'
         name: targets
 
     - name: set a list variable with the hosts_list
