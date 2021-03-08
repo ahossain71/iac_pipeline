@@ -5,8 +5,7 @@
 
     - include_vars: inventories.yml
   
-    - debug:
-        msg = "Hi {{ name }} !"
+    - debug: msg="Hi {{ name }} !"
     
     - name: Ansible remove words example
       set_fact:
