@@ -28,7 +28,7 @@
     #  with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
     - name: Include vars of ./vars/inventories.yml
-      include_vars: './roles/tomcat/vars/inventories.yml'
+      include_vars: inventories.yml
  
     - name: set a list variable with the hosts_list
       set_fact:
