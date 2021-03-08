@@ -2,8 +2,8 @@
 - hosts: localhost
 
   tasks:
-    - name: Include ./roles/tomcat/vars/inventories.yml
-      include_vars: inventories.yml
+  
+    - include_vars: inventories.yml
   
     - debug:
         var: "{{ target_hosts }}"
