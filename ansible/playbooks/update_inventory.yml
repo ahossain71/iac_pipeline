@@ -20,6 +20,9 @@
          
     - set_fact: 
         target_hosts: []
+    
+    - set_fact:
+        name: "John HArris"
        
     # - name: add host Ip addresses to gloabal variable tomcatnodes
     #  set_fact:
