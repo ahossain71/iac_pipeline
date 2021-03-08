@@ -49,12 +49,12 @@
         line: 'target_hosts: {{ target_hosts }}'
 
     - lineinfile:
-        path: 'inventories.yml'
+        path: './vars/inventories.yml'
         regexp: '^target_hosts:'
         line: 'target_hosts: {{ target_hosts }}'
 
     - lineinfile:
-        path: 'inventories.yml'
+        path: './vars/inventories.yml'
         regexp: '^name:'
         line: 'name: "Bob Marley"'
 
