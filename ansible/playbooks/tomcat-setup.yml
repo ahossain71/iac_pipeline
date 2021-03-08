@@ -2,11 +2,11 @@
 - hosts: localhost
 
   tasks:
-  
+
     - include_vars: inventories.yml
   
     - debug:
-        var: "{{ target_hosts }}"
+        var: "Hi {{ name }} !"
     
     #- name: Ansible remove words example
     #  set_fact:
