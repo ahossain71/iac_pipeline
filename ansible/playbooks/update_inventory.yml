@@ -18,12 +18,9 @@
     - debug:
         var: hosts_list
          
-    - set_fact: 
-        target_hosts: []
-    
-    - set_fact:
-        name: "John HArris"
-       
+    #- set_fact: 
+    #    target_hosts: []
+         
     # - name: add host Ip addresses to gloabal variable tomcatnodes
     #  set_fact:
     #    tomcatnodes: "{{ target_hosts + [item.1] }}"
@@ -46,11 +43,20 @@
     - debug:
         var: "{{ target_hosts }}"
 
-    #- lineinfile:
-    #    path: '../inventory/group_vars/all.yml'
-    #    regexp: '^target_hosts:'
-    #    line: 'target_hosts: {{ target_hosts }}'
+    - lineinfile:
+        path: 'inventories.yml'
+        regexp: '^target_hosts:'
+        line: 'target_hosts: {{ target_hosts }}'
 
+    - lineinfile:
+        path: 'inventories.yml'
+        regexp: '^target_hosts:'
+        line: 'target_hosts: {{ target_hosts }}'
+
+    - lineinfile:
+        path: 'inventories.yml'
+        regexp: '^name:'
+        line: 'name: "Bob Marley"'
 
     #- name: Update the ../inventory/hosts file with node name
     #  tags: inventoryhostsupdate

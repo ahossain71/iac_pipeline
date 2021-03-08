@@ -6,12 +6,15 @@
     - include_vars: inventories.yml
   
     - debug:
-        var: "Hi {{ name }} !"
+        msg = "Hi {{ name }} !"
     
-    #- name: Ansible remove words example
-    #  set_fact:
-    #    target_hosts: "{{ target_hosts }}"
+    - name: Ansible remove words example
+      set_fact:
+        target_hosts: "{{ target_hosts }}"
     
+    - debug:
+        var: "{{ target_hosts }}"
+
     #- debug:
     #    var: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
 
