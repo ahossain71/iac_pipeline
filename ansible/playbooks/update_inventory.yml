@@ -28,10 +28,8 @@
     #  with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
     - name: Include vars of ../inventory/group_vars/all.yml into the 'globalvars' variable.
-      include_vars:
-        file: '../inventory/group_vars/all.yml'
-        name: globalvars
-
+      include_vars: '../inventory/group_vars/all.yml'
+ 
     - name: set a list variable with the hosts_list
       set_fact:
         target_hosts: "{{ target_hosts + [item] }}"
@@ -43,9 +41,6 @@
     #    name: "variable_holder"
     #    tomcatnodes:  "{{ target_hosts }}"
   
-    - set_fact:
-        target_hosts: "{{ target_hosts}}"
-
     - debug:
         var: "{{ target_hosts }}"
 

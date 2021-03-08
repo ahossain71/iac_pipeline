@@ -2,13 +2,11 @@
 - hosts: localhost
 
   tasks:
-    - name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
-      include_vars:
-        file: '../inventory/group_vars/all.yml'
-        name: targets
+    - name: Include ../inventory/group_vars/all.yml
+      include_vars: '../inventory/group_vars/all.yml'
 
     - debug:
-        var: "{{ targets }}"
+        var: "{{ target_hosts }}"
     
     #- name: Ansible remove words example
     #  set_fact:
