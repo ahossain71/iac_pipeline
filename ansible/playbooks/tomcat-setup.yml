@@ -7,10 +7,10 @@
   
     - debug: msg="Hi {{ name }} !"
     
-    - name: Ansible remove words example
-      set_fact:
-        target_hosts: "{{ target_hosts }}"
-    
+    #- name: This is my Target Hosts list
+    #  set_fact:
+    #    target_hosts: "{{ target_hosts }}"
+   
     - debug:
         var: "{{ target_hosts }}"
 
