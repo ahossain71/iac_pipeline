@@ -11,8 +11,7 @@
     #  set_fact:
     #    target_hosts: "{{ target_hosts }}"
    
-    - debug:
-        var: "{{ target_hosts }}"
+    - debug: msg=" Target Hosts, {{ target_hosts }}"
 
     #- debug:
     #    var: "{{ hostvars['variable_holder']['tomcatnodes'] }}"
