@@ -41,7 +41,7 @@
     #    tomcatnodes:  "{{ target_hosts }}"
   
     - debug:
-        var: "{{ target_hosts[0] }}"
+        var: "{{ target_hosts[1] }}"
 
     #- lineinfile:
     #    path: './vars/inventories.yml'
