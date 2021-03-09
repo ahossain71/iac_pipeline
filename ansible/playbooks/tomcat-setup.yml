@@ -12,7 +12,7 @@
   roles:
     - tomcat
 
-    #- include_vars: inventories.yml
+    # - include_vars: inventories.yml
   
     #- debug: msg="Hi {{ name }} !"
     
