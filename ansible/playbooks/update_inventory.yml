@@ -8,7 +8,7 @@
    
     - name : Execute script
       #command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
-      command: 'ansible -i /etc/ansible/ec2.py --list'
+      command: 'ansible -i /etc/ansible/ec2.py ec2 --list'
       register: result
 
     #- set_fact:
