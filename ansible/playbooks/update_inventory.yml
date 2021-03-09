@@ -7,43 +7,29 @@
   tasks:
    
     - name : Execute script
-      command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
+      #command: 'ansible -i /etc/ansible/ec2.py tag_Name_tomcat-node* --list'
+      command: 'ansible -i /etc/ansible/ec2.py --list'
       register: result
 
-    - set_fact:
-        #target_hosts: "{{ result.stdout_lines.ansible_facts.hosts | select('match','^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$') | list }}" 
-        hosts_list: "{{ result.stdout_lines | list }}"
-      register: hosts_list
+    #- set_fact:
+    #    #target_hosts: "{{ result.stdout_lines.ansible_facts.hosts | select('match','^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$') | list }}" 
+    #    hosts_list: "{{ result.stdout_lines | list }}"
+    #  register: hosts_list
 
-    - debug:
-        var: hosts_list
+    #- debug:
+    #    var: hosts_list
          
-    - set_fact: 
-        target_hosts: []
+    #- set_fact: 
+    #    target_hosts: []
          
-    - name: add host Ip addresses to gloabal variable tomcatnodes
-      set_fact:
-        tomcatnodes: "{{ target_hosts + [item.1] }}"
-      when: item.0 > 0
-      with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
+    #- name: add host Ip addresses to gloabal variable tomcatnodes
+    #  set_fact:
+    #    tomcatnodes: "{{ target_hosts + [item.1] }}"
+    #  when: item.0 > 0
+    #  with_indexed_items: "{{ hosts_list.ansible_facts.hosts_list }}"
 
-    - debug:
-        var: "{{ target_hosts }}"
-
-
-- hosts:  "{{ target_hosts }}"  
-  become: yes               # If to escalate privilege
-  become_method: sudo       # Set become method
-  remote_user: ubuntu       # Update username for remote server
-  vars:
-    tomcat_ver: 9.0.30                          # Tomcat version to install
-    ui_manager_user: manager                    # User who can access the UI manager section only
-    ui_manager_pass: PoshaBiral@2021            # UI manager user password
-    ui_admin_username: admin                    # User who can access bpth manager and admin UI sections
-    ui_admin_pass: PoshaBiral@2021              # UI admin password
-  
-  roles:
-    - tomcat
+    #- debug:
+    #    var: "{{ target_hosts }}"
 
     #- name: Update the ../inventory/hosts file with node name
     #  tags: inventoryhostsupdate
