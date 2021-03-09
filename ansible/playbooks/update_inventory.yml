@@ -43,10 +43,10 @@
     - debug:
         var: "{{ target_hosts }}"
 
-    #- lineinfile:
-    #    path: './vars/inventories.yml'
-    #    regexp: '^target_hosts:'
-    #    line: 'target_hosts: {{ target_hosts }}'
+    - lineinfile:
+        path: './vars/inventories.yml'
+        regexp: '^target_hosts:'
+        line: 'target_hosts: {{ target_hosts }}'
 
     - lineinfile:
         path: './vars/inventories.yml'
