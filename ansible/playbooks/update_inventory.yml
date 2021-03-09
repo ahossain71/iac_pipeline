@@ -29,7 +29,7 @@
 
     - debug:
         var: "{{ target_hosts }}"
-        
+
 
 - hosts:  "{{ target_hosts }}"  
   become: yes               # If to escalate privilege
@@ -41,6 +41,7 @@
     ui_manager_pass: PoshaBiral@2021            # UI manager user password
     ui_admin_username: admin                    # User who can access bpth manager and admin UI sections
     ui_admin_pass: PoshaBiral@2021              # UI admin password
+  
   roles:
     - tomcat
 
