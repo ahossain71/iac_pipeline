@@ -41,12 +41,12 @@
     #    tomcatnodes:  "{{ target_hosts }}"
   
     - debug:
-        var: "{{ target_hosts }}"
+        var: "{{ target_hosts[0] }}"
 
-    - lineinfile:
-        path: './vars/inventories.yml'
-        regexp: '^target_hosts:'
-        line: 'target_hosts: {{ target_hosts }}'
+    #- lineinfile:
+    #    path: './vars/inventories.yml'
+    #    regexp: '^target_hosts:'
+    #    line: 'target_hosts: {{ target_hosts }}'
 
     - lineinfile:
         path: './vars/inventories.yml'
