@@ -33,7 +33,7 @@ pipeline {
           withCredentials([sshUserPrivateKey(credentialsId: 'a59a13e3-8e2f-4920-83c9-a49b576e5d58', keyFileVariable: 'myTestKeyPair02')]) {
             //sh 'ansible-playbook ./ansible/playbooks/tomcat-setup.yml --user ubuntu --private-key ${myTestKeyPair02} -vvv' 
             //sh 'ansible-playbook ./ansible/playbooks/tomcat-setup.yml --user ubuntu'
-            sh 'ansible -m ping tag_Name_tomcat-node* --user ubuntu -vvv'
+            sh 'ansible -m ping tag_Name_tomcat-node* --user ec2-user -vvv'
             }//end withCredentials
           sh "exit 0"
          }//end catchError
