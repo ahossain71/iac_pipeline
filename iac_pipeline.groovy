@@ -31,7 +31,8 @@ pipeline {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
           withCredentials([sshUserPrivateKey(credentialsId: 'a59a13e3-8e2f-4920-83c9-a49b576e5d58', keyFileVariable: 'myTestKeyPair02')]) {
-            sh 'ansible-playbook ./ansible/playbooks/tomcat-setup.yml --user ubuntu -vvv --private-key ~./ssh/authorized_keys'
+            sh 'ansible-playbook ./ansible/playbooks/tomcat-setup.yml --user ubuntu -vvv --key-file ${myTestKeyPair02}'
+            //sh 'ansible-playbook ./ansible/playbooks/tomcat-setup.yml --user ubuntu -vvv --private-key ~/.ssh/authorized_keys'
             //sh 'ansible-playbook ./ansible/playbooks/tomcat-setup.yml --user ubuntu'
             //sh 'ansible -m ping tag_Name_tomcat-node01 --user ubuntu -vvv --key-file ${myTestKeyPair02}'
             }//end withCredentials
